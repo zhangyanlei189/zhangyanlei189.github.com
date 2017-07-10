@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>安卓机器人</title>
+    <style>
+        html,body,div{
+            margin: 0;
+            padding: 0;
+        }
+        .wrap{
+            width: 500px;
+            height: 500px;
+            background: #000000;
+        }
+        .wrap>div{
+            margin-left: 100px;
+        }
+        .wrap .antenna{
+            height: 50px;
+            width: 100px;
+            position: relative;
+            -webkit-animation:main 2s linear infinite;
+        }
+        .wrap .antenna span{
+            position: absolute;
+            display: block;
+            width: 4px;
+            height: 10px;
+            background: rgb(133,194,38);
+            border-radius: 2px;
+        }
+        .wrap .antenna span.antenna1{
+            top: 45px;
+            left: 35px;
+            margin-left: -2px;
+            -webkit-transform:rotateZ(-30deg);
+        }
+        .wrap .antenna span.antenna2{
+            top: 45px;
+            left: 65px;
+            margin-left: -2px;
+            -webkit-transform:rotateZ(30deg);
+        }
+        .wrap .head{
+            width: 100px;
+            height: 40px;
+            background: rgb(133,194,38);
+            border-radius: 50px 50px 0 0/40px 40px 0 0;
+            position: relative;
+            -webkit-animation:main 2s linear infinite;
+        }
+        .wrap .head span{
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background: #FFFFFF;
+            position: absolute;
+        }
+        .wrap .head span.eye1{
+            left: 35px;
+            top: 15px;
+            margin-left: -5px;
+        }
+        .wrap .head span.eye2{
+            left: 65px;
+            top: 15px;
+            margin-left: -5px;
+        }
+        .wrap .body{
+            width: 100px;
+            height: 80px;
+            background: rgb(133,194,38);
+            border-radius: 0 0 10px 10px;
+            margin-top: 5px;
+            position: relative;
+            -webkit-animation:main 2s linear infinite;
+        }
+        .wrap .body span{
+            width: 10px;
+            height: 70px;
+            background: rgb(133,194,38);
+            border-radius: 5px;
+            position: absolute;
+            -webkit-transform-origin: top center;
+        }
+        .wrap .body span.arm1{
+            left: -15px;
+            -webkit-animation:arm1 2s linear infinite;
+        }
+        @-webkit-keyframes arm1{
+            0% {-webkit-transform:rotateZ(0)}
+            50%{-webkit-transform:rotateZ(30deg)}
+            100%{-webkit-transform:rotateZ(0deg)}
+        }
+        .wrap .body span.arm2{
+            left: 105px;
+            -webkit-animation:arm2 2s linear infinite;
+        }
+        @-webkit-keyframes arm2{
+            0% {-webkit-transform:rotateZ(0)}
+            50%{-webkit-transform:rotateZ(-30deg)}
+            100%{-webkit-transform:rotateZ(00deg)}
+
+        }
+        .wrap .bottom{
+            width: 100px;
+            position: relative;
+            -webkit-animation:main 2s linear infinite;
+        }
+        .wrap .bottom span{
+            display: block;
+            position: absolute;
+            width: 10px;
+            height: 30px;
+            background: rgb(133,194,38);
+            border-radius: 0 0 5px 5px;
+            margin-left: -5px;
+        }
+        .wrap .bottom span.foot1{
+            left: 35px;
+        }
+        .wrap .bottom span.foot2{
+            left: 65px;
+        }
+        @-webkit-keyframes main{
+            0%  {-webkit-transform:translate(0,0)}
+            50%  {-webkit-transform:translate(0,-20px)}
+            100%  {-webkit-transform:translate(0,0px)}
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="antenna">
+        <span class="antenna1"></span>
+        <span class="antenna2"></span>
+    </div>
+    <div class="head">
+        <span class="eye1"></span>
+        <span class="eye2"></span>
+    </div>
+    <div class="body">
+        <span class="arm1"></span>
+        <span class="arm2"></span>
+    </div>
+    <div class="bottom">
+        <span class="foot1"></span>
+        <span class="foot2"></span>
+    </div>
+</div>
+</body>
+</html>
