@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/popup.css"/>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/popup.js"></script>
+    <style>
+        *{padding: 0;margin: 0;}
+        #content{padding-left: 50px;}
+        .area{background: rgba(2, 207, 255, 0.34);height: 20px;margin: 20px 0;width: 200px;}
+        h4{margin: 10px 0;}
+        pre{background: #CCC;padding: 5px 0;margin:5px 0;width: 500px;}
+    </style>
+</head>
+<body>
+<div id="content">
+    <h2>弹出框演示</h2>
+    <div class="area"></div>
+    <h4>提示框</h4>
+<pre>
+   普通弹出框
+</pre>
+    <a href="javascript:void(0);" id="tips">演示</a>
+    <script>
+        //type值用来切换显示效果slideFromTop、slideFromBottom、showSweetAlert、none、layerFadeIn、layer-fadeInUpBig、layer-rollIn、layer-shake、layer-spread、layer-fadeIn
+        $("#tips").click(function(){
+            layer.alert("登录成功!","layer-rollIn");
+        });
+    </script>
+    <div class="area"></div>
+    <h4>确认框</h4>
+<pre>
+        确认框
+</pre>
+    <a href="javascript:void(0);" id="confirm">演示</a>
+    <script>
+        $("#confirm").click(function(){
+            layer.confirm("确认删除","slideFromTop",function(){
+                console.log("执行了取消操作");
+            },function(){
+                console.log("执行了确定操作");
+            });
+        });
+    </script>
+    <div class="area"></div>
+    <h4>表单</h4>
+<pre>
+    layer.load(url,"新增表单");
+</pre>
+    <a href="javascript:void(0);" id="form">演示</a>
+    <script>
+        $("#form").click(function(){
+            layer.load("form.html","layer-fadeInUpBig","noTitle");
+        });
+    </script>
+
+    <br>
+    <br>
+    *******************************************
+    <div style="color: red;font-size: 14px;">*代码中的样式逻辑可以根据需要修改</div>
+
+</div>
+</body>
+</html>

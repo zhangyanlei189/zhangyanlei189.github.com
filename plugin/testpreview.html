@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片预览</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+    <style>
+        *{margin:0;padding: 0;}
+    </style>
+</head>
+<body>
+<div>
+    <input name='pic' type="file" id="up_file" onchange="javascript:setImagePreview();">
+    <br><br>
+    <span class="tips">说明：平台会审核代码位是否有部署在上传图片显示的位置，如无则会不通过不生效</span>
+    <div class="img_place" style="display: none;">
+        <div id="localImag"><img id="preview" src="" width="150" height="180" style="display: block; width: 150px; height: 180px;"></div>
+    </div>
+</div>
+<script>
+    function setImagePreview() {
+        var docObj = document.getElementById("up_file");
+        var imgObjPreview = document.getElementById("preview");
+        if ((docObj.files) && (docObj.files[0])) {
+            imgObjPreview.style.display = 'block';
+            imgObjPreview.style.width = '150px';
+            imgObjPreview.style.height = '180px';
+            imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+        }
+        else {
+            docObj.select();
+            var imgSrc = document.selection.createRange().text;
+            var localImagId = document.getElementById("localImag");
+            localImagId.style.width = "150px";
+            localImagId.style.height = "180px";
+            try {
+                localImagId.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+                localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+            }
+            catch (e) {
+                alert("您上传的图片格式不正确，请重新选择!");
+                return false;
+            }
+            imgObjPreview.style.display = 'none';
+            document.selection.empty();
+        }
+        $(".img_place").show();
+        return true;
+    }
+</script>
+</body>
+</html>
