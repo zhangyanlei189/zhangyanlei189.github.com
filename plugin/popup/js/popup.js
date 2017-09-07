@@ -35,20 +35,20 @@ function Mask(dom,callback1,callback2){
 }
 Mask.alert = function(str,callback,title){
     var title = title?title:"提示"
-    var dom = "<div class=\"maskcontent\">"+
-        "<div class=\"title\"><span>"+title+"</span><a class=\"close\">&times;</a></div>"+
-        "<div class=\"cont\">"+str+"</div>"+
-        "<div class=\"foot\"><input type=\"button\" class=\"yesbtn okbtn\" value=\"确定\"/></div>"+
+    var dom = "<div class='maskcontent'>"+
+        "<div class='title'><span>"+title+"</span><a class='close'>&times;</a></div>"+
+        "<div class='cont'>"+str+"</div>"+
+        "<div class='foot'><input type='button' class='yesbtn okbtn' value='确定'/></div>"+
         "</div>";
     Mask(dom,callback,callback);
 };
 Mask.confirm = function(str,callback1,callback2){
-    var dom = "<div class=\"maskcontent\">"+
-        "<div class=\"title\"><span>提示</span><a class=\"close\">&times;</a></div>"+
-        "<div class=\"cont\">"+str+"</div>"+
-        "<div class=\"foot\">"+
-        "<input type=\"button\" class=\"yesbtn okbtn\" value=\"确定\"/>"+
-        "<input type=\"button\" class=\"nobtn clbtn\" value=\"取消\"/>"+
+    var dom = "<div class='maskcontent'>"+
+        "<div class='title'><span>提示</span><a class='close'>&times;</a></div>"+
+        "<div class='cont'>"+str+"</div>"+
+        "<div class='foot'>"+
+        "<input type='button' class='yesbtn okbtn' value='确定'/>"+
+        "<input type='button' class='nobtn clbtn' value='取消'/>"+
         "</div>"+
         "</div>";
     Mask(dom,callback1,callback2);
@@ -57,9 +57,9 @@ Mask.load = function(url,title,callback,onload){
     $.get(url,{},function(data){
         if(!title){title="";}
         if(title == "notitle"){
-            var dom = "<div class=\"maskcontent\"><div class=\"notitle\"><a class=\"close_btn\">&times;</a></div>"+data+"</div>";
+            var dom = "<div class='maskcontent'><div class='notitle'><a class='close_btn'>&times;</a></div>"+data+"</div>";
         }else{
-            var dom = "<div class=\"maskcontent\"><div class=\"title\"><span>"+title+"</span><a class=\"close\">&times;</a></div>"+data+"</div>";
+            var dom = "<div class='maskcontent'><div class='title'><span>"+title+"</span><a class='close'>&times;</a></div>"+data+"</div>";
         }
         Mask(dom,callback,false);
         if(onload){onload();}
