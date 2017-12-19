@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="clipboard.min.js"></script>
+</head>
+<body>
+<a href="javascript:void(0);" id="btn" class="js-copy" data-clipboard-text="我是被复制的内容啊">
+    <span>点击复制</span>
+</a>
+<script>
+    var btn = document.getElementById('btn');
+    var clipboard = new Clipboard(btn);//实例化
+
+    //复制成功执行的回调，可选
+    clipboard.on('success', function(e) {
+        console.log(e.text);
+    });
+
+    //复制失败执行的回调，可选
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+</script>
+</body>
+</html>
