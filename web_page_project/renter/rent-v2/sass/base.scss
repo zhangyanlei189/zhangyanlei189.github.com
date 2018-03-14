@@ -1,0 +1,156 @@
+@charset "UTF-8";
+/*公共样式--开始*/
+html, body, blockquote, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, hr, a, img, label, input, legend, li, ol, p, pre, td, textarea, th, ul {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  /* min-height: 100%;*/
+  min-width: 980px;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;/*chrome safari*/
+  -moz-osx-font-smoothing: grayscale;/*firefox*/
+}
+
+body, button, input, select, textarea {
+  font: 12px/1.5 "Microsoft Yahei", Arial, Helvetica, sans-serif !important;
+  color: #848383;
+}
+
+button, input, select, textarea {
+  font-size: 100%;
+}
+
+input {
+  padding: 0 5px;
+}
+
+textarea {
+  padding: 5px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  border: none;
+  vertical-align: middle;
+  max-height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: #444443;
+}
+
+em {
+  font-style: normal;
+}
+
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+input, textarea, button {
+  outline: none;
+}
+
+textarea {
+  resize: none;
+  overflow: auto;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.clearfix:after {
+  content: ".";
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+  overflow: hidden;
+}
+.red{
+  color: #cb5457!important;
+}
+.fl {
+  float: left
+}
+
+.fr {
+  float: right
+}
+
+.tl {
+  text-align: left;
+}
+
+.tc {
+  text-align: center
+}
+
+.tr {
+  text-align: right;
+}
+
+@mixin inline{
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+};
+@mixin eclipse{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@mixin opacity($opacity:50){
+  opacity:$opacity/100;
+  filter:alpha(opacity=$opacity)
+}
+@mixin box-shadow($shadow...){
+  box-shadow:$shadow;
+  -webkit-box-shadow:$shadow;
+  -moz-box-shadow:$shadow;
+  -ms-box-shadow:$shadow;
+  -o-box-shadow:$shadow;
+}
+@mixin text-shadow($shadow...){
+  text-shadow:$shadow;
+  -webkit-text-shadow:$shadow;
+  -moz-text-shadow:$shadow;
+  -ms-text-shadow:$shadow;
+  -o-text-shadow:$shadow;
+}
+@mixin border-radius($radius){
+  border-radius:$radius;
+  -webkit-border-radius:$radius;
+  -moz-border-radius:$radius;
+  -ms-border-radius:$radius;
+  -o-border-radius:$radius;
+}
+@mixin bg($cor1,$cor2,$cor3){
+  background: $cor2;
+  background-image: -moz-linear-gradient( 90deg,  $cor1 0%, $cor2 40%,$cor1 100%);
+  background-image: -webkit-linear-gradient( 90deg,  $cor1 0%, $cor2 40%,$cor1 100%);
+  background-image: -ms-linear-gradient( 90deg,  $cor1 0%, $cor2 40%,$cor1 100%);
+  border:1px solid $cor3;
+  color: #fff;
+}
+$color:#FF791F;
+$color1:#333;
