@@ -28,6 +28,7 @@
             imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
         }
         else {
+            docObj.blur()
             docObj.select();
             var imgSrc = document.selection.createRange().text;
             var localImagId = document.getElementById("localImag");
