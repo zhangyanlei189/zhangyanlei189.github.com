@@ -18,6 +18,9 @@
  ## 汽车库
     1. 遮罩层不能阻止body的滑动
        解决2种方法：1、在遮罩上绑定touchmove事件，并阻止事件冒泡
-                   2、给遮罩下的元素设置position:fixed；overflow:hidden;关闭遮罩的时候，再设置成position:static;overflow:auto 
+                   2、给遮罩下的元素设置position:fixed；overflow:hidden;关闭遮罩的时候，再设置成position:static;overflow:auto
+                   
+    2.解决ios系统下文字会出现自动适配容器的情况，即出现font-size不起作用的情况
+        解决方法：在body标签下加样式 -webkit-text-size-adjust: none;                   
 
         
