@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    https://m.baidu.com/from=844b/bd_page_type=1/ssid=0/uid=0/pu=usm%406%2Csz%401320_2001%2Cta%40iphone_1_11.0_3_604/baiduid=D4E361150460A427C2C214458972464B/w=0_10_/t=iphone/l=1/tc?ref=www_iphone&lid=12419107963058941318&order=1&fm=alop&is_baidu=0&h5ad=0&tj=www_sitelink_normal_1_0_10_title&hwj=1550313435937178&wd=&eqid=ac5988e4a55a7000100000065b851300&w_qd=IlPT2AEptyoA_ykzzw1by3Gv1jO&tcplug=1&sec=32313&di=45e90e3f17a3bdc5&bdenc=1&tch=124.0.216.181.0.0&nsrc=IlPT2AEptyoA_yixCFOxXnANedT62v3IGtiFNj-LAnSxokDyqRK&clk_info=%7B%22srcid%22%3A1539%2C%22tplname%22%3A%22www_sitelink_normal%22%2C%22t%22%3A1535447832888%2C%22xpath%22%3A%22div-a-h3-span%22%7D
+
+
+    https://m.baidu.com/from=844b/bd_page_type=1/ssid=0/uid=0/pu=usm%406%2Csz%401320_2001%2Cta%40iphone_1_11.0_3_604/baiduid=D4E361150460A427C2C214458972464B/w=0_10_/t=iphone/l=1/tc?ref=www_iphone&lid=12419107963058941318&order=1&fm=alop&is_baidu=0&h5ad=0&tj=www_sitelink_normal_1_0_10_title&hwj=1550313435937178&wd=&eqid=ac5988e4a55a7000100000065b851300&w_qd=IlPT2AEptyoA_ykzzw1by3Gv1jO&tcplug=1&sec=32313&di=45e90e3f17a3bdc5&bdenc=1&tch=124.0.216.181.0.0&nsrc=IlPT2AEptyoA_yixCFOxXnANedT62v3IGtiFNj-LAnSxokDyqRK&clk_info=%7B%22srcid%22%3A1539%2C%22tplname%22%3A%22www_sitelink_normal%22%2C%22t%22%3A1535447832888%2C%22xpath%22%3A%22div-a-h3-span%22%7D
+
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+*移动端跳转判断
+*/
+        function GetCookieVal(offset){
+            var endstr = document.cookie.indexOf (";", offset);
+            if (endstr == -1)
+                endstr = document.cookie.length;
+            return unescape(document.cookie.substring(offset, endstr));
+        }
+        function GetCookie(name){
+            var arg = name + "=";
+            var alen = arg.length;
+            var clen = document.cookie.length;
+            var i = 0;
+            while (i < clen){
+                var j = i + alen;
+                if (document.cookie.substring(i, j) == arg)
+                    return GetCookieVal (j);
+                i = document.cookie.indexOf(" ", i) + 1;
+                if (i == 0) break;
+            }
+            return null;
+        }
+        var browser = {
+            versions: function () {
+                var u = navigator.userAgent, app = navigator.appVersion;
+                return {//移动终端浏览器版本信息
+                    trident: u.indexOf('Trident') > -1, //IE内核
+                    presto: u.indexOf('Presto') > -1, //opera内核
+                    webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                    gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                    mobile: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/), //是否为移动终端
+                    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+                    iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                    iPad: u.indexOf('iPad') > -1, //是否iPad
+                    webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+                    winphone:u.indexOf('Windows Phone') > -1 //Windows Phone
+                };
+            } (),
+            language: (navigator.browserLanguage || navigator.language).toLowerCase(),
+            appcookie:GetCookie('wap_pcpop')
+        }
+        var hascookie = browser.appcookie;
+        var ref=document.referrer;
+        if(ref.toLocaleLowerCase().indexOf("m.it168.com")!=-1)
+        { hascookie="pc";}
+
+        if ((hascookie==null) && (browser.versions.android ||  browser.versions.iPhone || browser.versions.winphone ))
+        {
+            location.href = 'http://m.it168.com/';
+        }
+        else if((hascookie!="pc") && (browser.versions.android  ||  browser.versions.iPhone || browser.versions.winphone  ))
+        {location.href = "http://m.it168.com/";}
+    </script>
+</head>
+<body>
+dfagdsagj
+<div style="display: none;">
+<iframe src="http://www.cheshi.com/beijing/link/imp1.html" frameborder="0" scrolling="no" width="0" height="1"></iframe>
+</div>
+</body>
+</html>

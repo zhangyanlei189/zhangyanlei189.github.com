@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html"  ng-app="IT168" ng-class="{banscoll: banScroll}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>IT168首页</title>
+    <link rel="stylesheet" href="public/css/swiper.css">
+    <link rel="stylesheet" href="public/css/base.css">
+    <script src="public/js/jquery.js"></script>
+    <script src="public/js/base.js"></script>
+    <script src="public/js/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers.js"></script>
+    <script src="public/js/swiper.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="public/js/wxShare.js"></script>
+
+</head>
+<body ng-class="{banscoll: banScroll}">
+<div ng-include="'views/header.html'"></div>
+<div ng-controller="navCtrl" ng-cloak data-tap-disabled="true" >
+    <div class="nav_box">
+        <div class="nav_more" ng-click="navEvent()"  ng-class="{navMoreUp: navMoreUp}"></div>
+        <div class="nav_menu">
+            <div class="nav">
+                <a ng-repeat="(key,nav) in navs" ng-class="{active: key == index}" href="{{nav.link}}" target="_self">{{nav.text}}</a>
+            </div>
+        </div>
+    </div>
+    <!--导航展开更多开始-->
+    <div ng-include="'views/navAll.html'"></div>
+    <!--导航展开更多结束-->
+</div>
+
+<div class="ITi68Wrap">
+    <div>
+        <!--banner部分-->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <!--<a href="{{slide.link}}" target="_self">
+                        <img ng-src="{{slide.imgSrc}}"/>
+                        <p class="slide-title"><i>{{slide.text}}</i></p>
+                        <p class="slide-page"><span>{{key+1}}</span>/{{slides.length}}</p>
+                    </a>-->
+                    <a href="#" target="_self">
+                        <img src="http://s.u7u9.com/images/1/0/10b99f5dac7698fffcc24fce5fde8181.jpg"/>
+                        <p class="slide-title"><i>侠客风云传前传》DLC“幽冥路”实机演示曝光 年轻阎罗亮相</i></p>
+                        <p class="slide-page"><span>1</span>/3</p>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#" target="_self">
+                        <img src="http://s.u7u9.com/images/1/0/10b99f5dac7698fffcc24fce5fde8181.jpg"/>
+                        <p class="slide-title"><i>侠客风云传前传》DLC“幽冥路”实机演示曝光 年轻阎罗亮相</i></p>
+                        <p class="slide-page"><span>2</span>/3</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <script>
+            var swiper = new Swiper('.swiper-container', {
+                loop: true,
+                spaceBetween: 30,
+                centeredSlides: true,
+                autoplay:{
+                    disableOnInteraction:false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+        </script>
+        <!--banner图结束-->
+        <!--活动开始-->
+        <!--<a href="{{activityHref}}" class="IT-activity" ng-if="data.activity"><span>活动</span>{{activity}}</a>-->
+        <!--活动结束-->
+    </div>
+
+    <!--列表开始-->
+    <div ng-include="'views/list.html'"></div>
+    <!--列表结束-->
+</div>
+<script>
+
+</script>
+</body>
+</html>

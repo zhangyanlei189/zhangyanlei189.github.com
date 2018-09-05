@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>m.it168广告</title>
+    <link rel="stylesheet" href="public/css/base.css">
+    <script src="public/js/jquery.js"></script>
+    <script src="public/js/base.js"></script>
+</head>
+<body>
+<header class="header">
+
+</header>
+<div class="nav_box"></div>
+<!--<div class="nav-open" style="background-color: red;"></div>-->
+
+<!--顶部广告开始-->
+<div class="m-it168-top-ad" style="display: block;">
+    <a href="#"> <img src="http://image20.it168.com/postion/3122/c5ace9d5-ceae-47fd-8901-bedb705aec4d.jpg" alt=""></a>
+    <div class="close"></div>
+    <div class="label scale">广告</div>
+    <script>
+        $(function () {
+            if ($(".m-it168-top-ad").length && $(".m-it168-top-ad").attr("style").indexOf("none") == -1) {
+                $(".header").css({"top": "2.56rem"});
+                $(".nav_box").css({"top": "4.4373rem"});
+                $(".nav-open").css({"padding-top": "6.336rem"});
+                $(".ITi68Wrap").css({"padding-top": "6.336rem"});
+                $(".IT168Detail").addClass("m-it168-padding-top");
+            }
+            $(".m-it168-top-ad .close").on("click", function () {
+                $(".m-it168-top-ad").remove();
+                $(".header").css({"top": "0"});
+                $(".nav_box").css({"top": "1.87733333rem"});
+                $(".nav-open").css({"padding-top": "3.776rem"});
+                $(".ITi68Wrap").css({"padding-top": "3.75466667rem"});
+                $(".IT168Detail").removeClass("m-it168-padding-top");
+            })
+        });
+    </script>
+</div>
+<!--顶部广告结束-->
+<div class="ITi68Wrap">
+    <!--焦点图开始-->
+    <div class="swiper-container">
+        <link rel="stylesheet" href="public/css/swiper.css">
+        <script src="public/js/swiper.min.js"></script>
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" ng-repeat="(key,slide) in slides" ng-cloak on-finish-render1>
+                <a href="#" target="_self">
+                    <img src="http://s.u7u9.com/images/1/0/10b99f5dac7698fffcc24fce5fde8181.jpg"/>
+                    <p class="slide-title"><i>侠客风云传前传》DLC“幽冥路”实机演示曝光 年轻阎罗亮相</i></p>
+                    <p class="slide-page"><span>1</span>/4</p>
+                </a>
+            </div>
+            <div class="swiper-slide" ng-repeat="(key,slide) in slides" ng-cloak on-finish-render1>
+                <a href="#" target="_self">
+                    <img src="http://s.u7u9.com/images/1/0/10b99f5dac7698fffcc24fce5fde8181.jpg"/>
+                    <p class="slide-title"><i>侠客风云传前传》DLC“幽冥路”实机演示曝光 年轻阎罗亮相</i></p>
+                    <p class="slide-page"><span>2</span>/4</p>
+                </a>
+            </div>
+            <div class="swiper-slide" ng-repeat="(key,slide) in slides" ng-cloak on-finish-render1>
+                <a href="#" target="_self">
+                    <img src="http://s.u7u9.com/images/1/0/10b99f5dac7698fffcc24fce5fde8181.jpg"/>
+                    <p class="slide-title"><i>侠客风云传前传》DLC“幽冥路”实机演示曝光 年轻阎罗亮相</i></p>
+                    <p class="slide-page"><span>3</span>/4</p>
+                </a>
+            </div>
+            <div class="swiper-slide" ng-repeat="(key,slide) in slides" ng-cloak on-finish-render1>
+                <a href="#" target="_self">
+                    <img src="http://s.u7u9.com/images/1/0/10b99f5dac7698fffcc24fce5fde8181.jpg"/>
+                    <p class="slide-title"><i>侠客风云传前传》DLC“幽冥路”实机演示曝光 年轻阎罗亮相</i></p>
+                    <p class="slide-page"><span>4</span>/4</p>
+                </a>
+            </div>
+        </div>
+        <script>
+            var swiper = new Swiper('.swiper-container', {
+                loop: true,
+                spaceBetween: 30,
+                centeredSlides: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+        </script>
+    </div>
+    <!--检点图结束-->
+
+    <!--文字链广告开始-->
+    <a href="http://mobile.it168.com/topic/2018/2-25/MWC18/" class="IT-activity" target="_self"><span>广告</span>直击巴塞罗那MWC18：小编带你玩</a>
+    <!--文字链广告结束-->
+
+    <ul class="IT-list">
+        <li class="">
+            <!--feed流广告样式1开始-->
+            <div class="m-it168-feed-ad1">
+                <style>
+                    .m-it168-feed-ad1 a {
+                        display: block;
+                        height: auto!important;
+                        overflow: hidden;
+                        text-decoration: none;
+                    }
+                    .m-it168-feed-ad1 .scale {
+                        -webkit-transform:scale(0.5);
+                        transform:scale(0.5);
+                        -webkit-transform-origin: 0 0;
+                        transform-origin: 0 0;
+                    }
+                    .m-it168-feed-ad1 {
+                        position: relative;
+                        height: auto;
+                    }
+
+                    .m-it168-feed-ad1 a .mess {
+                        float: none;
+                        width: auto;
+                        height: 1.17333333rem;
+                        overflow: hidden;
+                        float: none;
+                        width: auto;
+                        height: 1.17333333rem;
+                        overflow: hidden;
+                    }
+
+                    .m-it168-feed-ad1 a .mess .text {
+                        height: 100%;
+                        overflow: hidden;
+                        line-height: 1.17333333rem;
+                        width: 13.44rem;
+                        font-size: 0.768rem;
+                        color: #333;
+                        height: 100%;
+                        overflow: hidden;
+                        line-height: 1.17333333rem;
+                        width: 13.44rem;
+                    }
+
+                    .m-it168-feed-ad1 a img {
+                        float: none;
+                        width: 100%;
+                        height: 7.50933333rem;
+                        border: 1px solid #c2c2c2;
+                        -webkit-box-sizing: border-box;
+                        -moz-box-sizing: border-box;
+                        box-sizing: border-box;
+                        float: none;
+                        width: 100%;
+                        height: 7.50933333rem;
+                        border: 1px solid #c2c2c2;
+                        -webkit-box-sizing: border-box;
+                        -moz-box-sizing: border-box;
+                        box-sizing: border-box;
+
+                    }
+
+                    .m-it168-feed-ad1 a .label {
+                        position: absolute;
+                        top: 0.3rem;
+                        right: -1.2rem;
+                        margin-right: 0;
+                        background-color: #fff;
+                        color: #c2c2c2;
+                        padding: 0 0.29866666rem;
+                        font-size: 0.85333334rem;
+                        border: 1px solid #c2c2c2;
+                    }
+                </style>
+                <a href=""  target="_self">
+                    <div class="mess">
+                        <div class="text">一加手机5T开箱：大多数人理想的旗舰手机</div>
+                        <div class="label scale">广告</div>
+                    </div>
+                    <img src="http://image20.it168.com/postion/3122/c5ace9d5-ceae-47fd-8901-bedb705aec4d.jpg" alt="">
+                </a>
+            </div>
+            <!--feed流广告样式1结束-->
+        </li>
+        <li>
+            <!--feed流广告样式2结束-->
+            <div class="m-it168-feed-ad2">
+                <a href=""  target="_self">
+                    <div class="mess">
+                        <div class="text">wertyuytre数人理想的旗舰手机</div>
+                        <div class="time">
+                            <div class="classify-ad">广告</div>
+                            1月25日
+                        </div>
+
+                    </div>
+                    <img src="http://image20.it168.com/postion/3122/c5ace9d5-ceae-47fd-8901-bedb705aec4d.jpg" alt="">
+                </a>
+            </div>
+            <!--feed流广告样式2结束-->
+        </li>
+    </ul>
+</div>
+<!--首屏广告开始-->
+<div class="IT168-ad">
+    <div class="count">5s后关闭</div>
+    <a href="" target="_self"><img alt="" src="public/img/ad.jpg"></a>
+    <div class="close"></div>
+    <script>
+        $(".IT168-ad .close").on("click",function(){
+            $(".IT168-ad").remove();
+        });
+        var count = 5;
+        var timer = setInterval(function(){
+            count--;
+            if(count == 0){
+                clearInterval(timer);
+                $(".IT168-ad").remove();
+            }
+            $(".IT168-ad .count").html(count+"s后关闭");
+        },1000);
+    </script>
+</div>
+<!--首屏广告结束-->
+</body>
+</html>

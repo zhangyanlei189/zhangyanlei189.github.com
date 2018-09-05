@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html"  ng-app="IT168" ng-class="{banscoll: banScroll}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>评论</title>
+    <link rel="stylesheet" href="public/css/base.css">
+    <script src="public/js/jquery.js"></script>
+    <script src="public/js/base.js"></script>
+    <script src="public/js/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
+</head>
+<body>
+
+<header class="header" ng-controller="commentCtrl">
+    <div class="pl"><a href="javascript:;" class="IT-back" ng-click="backEvent()"></a></div>
+    <h1>评论</h1>
+    <a href="javascript:;" class="nav-more pr" ng-click="navToggleEvent()" ng-class="{navMoreClose: !navAllShow}"></a>
+</header>
+<!--导航展开更多开始-->
+<div ng-include="'views/navAll.html'"></div>
+<!--导航展开更多结束-->
+<style>
+    .nav-open { padding-top: 1.888rem;}
+    .comment-detail {
+        padding-top: 1.87733333rem;
+        width: 16rem;
+        max-width: 16rem;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        position: relative;
+    }
+    .comment-detail .mobile-cmt-box {
+        top: 1.87733333rem!important;
+    }
+</style>
+<div class="comment-detail" ng-controller="commentCtrl">
+    <!--畅言开始-->
+    <div id="SOHUCS" sid="{{id}}"></div>
+    <script id="changyan_mobile_js" charset="utf-8" type="text/javascript"
+            src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=cyrjqzNlH&conf=prod_cf31fc2bdd7308ac5c845c72b280ea19">
+    </script>
+    <!--畅言结束-->
+</div>
+<script>
+    angular.module('Controllers', [])
+            .controller("commentCtrl",['$scope','$location',function($scope,$location){
+                /*返回到上一个页面*/
+                $scope.backEvent = function () {
+                    window.history.back();
+                }
+                $scope.id = $location.search().id;
+            }])
+            /*$location配置*/
+            .config(['$locationProvider', function ($locationProvider) {
+                $locationProvider.html5Mode({
+                    enabled: true,
+                    requireBase: false//必须配置为false，否则<base href=''>这种格式带base链接的地址才能解析
+                });
+            }]);
+</script>
+</body>
+</html>

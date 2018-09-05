@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>详情页</title>
+    <link rel="stylesheet" href="public/css/base.css">
+    <script src="public/js/jquery.js"></script>
+    <script src="public/js/base.js"></script>
+    <script src="public/js/angular.min.js"></script>
+    <script src="https://cdn.bootcss.com/angular-sanitize/1.5.8/angular-sanitize.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="public/js/wxShare.js"></script>
+    <style>
+        .IT168Detail .content iframe{
+            height: 9rem !important;
+        }
+    </style>
+</head>
+<body ng-app="detailText"  ng-cloak ng-controller="detailCtrl">
+<header class="header headerDetail" >
+    <div  class="logo pl"><a href="index.html" target="_self"><img src="public/img/logo.png" alt=""></a></div>
+    <h1><a href="channel-index-{{data.item.channelid}}.html" target="_self">{{data.item.channelname}}</a></h1>
+    <div class="pr"><a target="_self" href="comment.html?id={{detailId}}" class="fankui"></a><a href="javascript:;" class="share" ng-click="shareShowEvent()"></a></div>
+</header>
+<div class="IT168Detail">
+    <div class="title">{{data.item.arttitle}}</div>
+    <div class="author">作者 {{data.item.artauthorname}} {{data.item.artcreatetime}}</div>
+    <div class="content" ng-bind-html = "htmlStr"></div>
+
+    <!-- 熊掌号代码 -->
+    <script src="//msite.baidu.com/sdk/c.js?appid=1536766848507336"></script>
+    <script>cambrian.render('body')</script>
+    <!-- 熊掌号代码 end -->
+
+    <!--专题入口开始-->
+    <a href="special.html" target="_self" class="thematic-entrance" ng-if="data.thematic">
+        <img ng-src="{{data.thematic.imgSrc}}" alt="">{{data.thematic.text}}
+    </a>
+    <!--专题入口结束-->
+
+    <!--相关文章开始-->
+    <div class="relevant" when-scrolled>
+        <h3>相关文章</h3>
+        <ul class="IT-list" style="padding: 0;">
+            <li ng-repeat="(key,item) in data.relevantList" ng-cloak class="{{item.class}}">
+                <a href="{{item.arturl}}" target="_self"   ng-if="item.class != 'item-img'">
+                    <div class="mess">
+                        <div class="text">{{item.arttitle}}</div>
+                        <div class="time"><span class="{{item.classify}}">{{item.classifyText}}</span>{{item.artsetpubdate}}</div>
+                    </div>
+                    <img ng-src="{{item.firstimg}}" alt="">
+                </a>
+                <a href="{{item.link}}{{item.id | filterId}}" target="_self"  ng-if="item.class =='item-img'">
+                    <div class="mess">
+                        <div class="text">{{item.text}}</div>
+                    </div>
+                    <div class="pic">
+                        <img alt="" ng-repeat="value in item.imgSrc.src" ng-src="{{value.imgSrc}}">
+                        <div class="picnum">{{item.imgSrc.num}}图</div>
+                    </div>
+                    <div class="time"><span class="{{item.classify}}">{{item.classifyText}}</span>{{item.time | filterTime}}</div>
+                </a>
+            </li>
+        </ul>
+        <div  class="IT-loading"  ng-hide="loading">
+            <span class="loading-animate"></span>加载中...
+        </div>
+        <!--反馈开始-->
+        <div class="IT-feedback" ng-hide="feedback"><a href="javascript:;" target="_self"  ng-click="backTop()"></a><a href="https://jinshuju.net/f/PSJ9ql" target="_self"></a></div>
+        <!--反馈结束-->
+    </div>
+    <!--相关文章结束-->
+
+    <!--分享模块开始-->
+    <!--<div ng-include="'views/share.html'"></div>-->
+    <div class="share-wrap" ng-click="shareHideEvent()">
+        <div class="wx-share-img">
+            <img src="public/img/weixin_share2.png" alt="">
+        </div>
+        <div class="IT-share">
+            <div class="close"></div>
+            <div class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1515997092753">
+                <h2 class="graydeep">分享到</h2>
+                <p><a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a></p>
+                <p><a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a></p>
+            </div>
+            <div class="qita-share">
+                <p>请使用浏览器的分享功能<br/>分享到微信等</p>
+            </div>
+        </div>
+    </div>
+    <!--分享模块结束-->
+</div>
+
+<!--footer部分开始-->
+<div ng-include="'views/footer.html'"></div>
+<!--footer部分结束-->
+
+
+<script>
+    var app = angular.module('detailText', ["ngSanitize"]);
+    app.run(['$rootScope','$location', '$http',function ($rootScope,$location,$http) {
+        /*返回顶部按钮显示或隐藏*/
+        $rootScope.feedback = true;
+
+        /*分享弹框显示隐藏--star*/
+        $rootScope.shareShowEvent = function(){
+            angular.element(".share-wrap").show();
+        };
+        /*分享弹框显示隐藏--end*/
+    }]);
+    app.controller('detailCtrl', ['$scope', '$http','$location','$rootScope','$timeout','$sce',function ($scope,$http,$location,$rootScope,$timeout,$sce) {
+        $scope.loading = false;//相关文章显示隐藏参数
+        /*反馈页面的id参数*/
+        var detailUrl = $location.url();
+        $scope.detailId = detailUrl.substring(detailUrl.indexOf('_')+1,detailUrl.lastIndexOf('.'));
+        /*返回顶部事件*/
+        $scope.backTop = function(){
+            angular.element('html,body').animate({scrollTop:0}, 300);
+        };
+        /*请求数据布在页面上*/
+        /*$http({
+            method: 'get',
+            url: 'datas/detailText.json',
+            params: { // get 参数
+                id: $location.search().id
+            },
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })*/
+
+        var ids = $location.search().id;
+        var idArr = ids.split("_");
+        if(idArr[1] && idArr[1] != 0 &&idArr[1] != ""){
+            var _url = "http://author2.it168.cn/api/xcsx/article/info?jsoncallback=JSON_CALLBACK&id="+idArr[0];
+            // var _url = "http://author2.it168.cn/api/it168/app/info?jsoncallback=JSON_CALLBACK&id="+idArr[0]+"&flag=b&from=xcsx";
+        }else {
+            var _url = "http://api.cms.it168.com/api/it168/app/info?jsoncallback=JSON_CALLBACK&id="+idArr[0]+"&flag=b";
+        }
+
+        $http.jsonp(_url).success(function (data, status, headers, config) {
+            $scope.loading = true;
+            if(!data.code){
+                window.location.href = "404.html"
+            }else {
+                var data = data.data;
+                data.item.artcontent = $sce.trustAsHtml(data.item.artcontent);//数据渲染，插入html节点
+                $scope.data = data;
+                console.log($scope.data);
+
+                $scope.htmlStr = data.item.artcontent;
+                document.title=data.item.arttitle;
+                shareEvent(data.item.arttitle, data.item.artexcerpt, data.item.firstimg);
+            }
+        });
+    }]);
+    /*滚动到第二屏事件开始--显示反馈按钮*/
+    app.directive('whenScrolled', ['$rootScope','$timeout', function ($rootScope,$timeout) {
+        return function (scope, elem, attrs) {
+            var forbid = false;
+            $(window).scroll(function () {
+                if (!forbid) {
+                    var scrollTop = $(window).scrollTop();
+                    var windowHeight = $(window).height();
+                    if (scrollTop <= windowHeight) {
+                        $rootScope.feedback = true;
+                    } else {
+                        $rootScope.feedback = false;
+                    }
+                    $rootScope.$apply();
+                }
+
+            });
+        }
+    }])
+    /*滚动到第二屏事件结束*/
+
+    /*配置获取url后的参数*/
+    app.config(['$locationProvider', function ($locationProvider) {
+        $locationProvider.html5Mode({
+            enabled: true,
+            requireBase: false//必须配置为false，否则<base href=''>这种格式带base链接的地址才能解析
+        });
+    }]);
+    /*对链接后的参数进行过滤*/
+    app.filter("filterId", function () {
+        return function (input) {
+            if(input == -1){
+                return
+            }else {
+                return "?id="+input
+            }
+        }
+    });
+    app.filter("filterTime", function () {
+        return function (input) {
+            var postTime = parseInt(input);
+            var timestamp = parseInt(Date.parse(new Date()));
+            var disTime = parseInt((timestamp - postTime)/1000/60);
+            var postDate = (new Date(postTime).getMonth()+1)+"月"+new Date(postTime).getDate()+"日";
+            if(disTime <60){
+                if(disTime == 0){
+                    return "刚刚";
+                }else {
+                    return disTime+"分钟前";
+                }
+            }else {
+                if(disTime/60 <24 ){
+                    return parseInt(disTime / 60)+"小时前"
+                }else {
+                    return postDate;
+                }
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

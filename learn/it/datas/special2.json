@@ -1,0 +1,114 @@
+{
+  "code": 1,
+  "data": {
+    "title": "专题页分享标题",  //微信分享标题
+    "abstractImg": "http://image20.it168.com/postion/3120/4fc49b8c-3cf3-48fe-a509-25def082cd2b.jpg", //微信分享图片
+    "abstractContent": "在纽约发布会后，一加今天终于在北京发布了全新的全面屏手机。而CEO刘作虎也为国内用户奉上了诚意的惊喜。",//微信分享内容
+    "abstractLabel": [ //专题小类
+      {
+        "label": "专题小类A"
+      },
+      {
+        "label": "专题小类B"
+      }
+    ],
+    "specialList": [ //专题小类数据
+      {
+        "className": "专题小类A", //专题小类名称
+        "classList": [ //数据格式与列表一致
+          {
+            "link": "detailText.html",
+            "text": "一加手机5T开箱：大多数人理想的旗舰手机",
+            "time": "",
+            "classify": "classify-ad",
+            "classifyText": "广告",
+            "imgSrc": "http://image20.it168.com/postion/3119/dc30cff3-329c-4fdb-b6a1-cb80bcc0d8c9.jpg",
+            "class": "item-ad",
+            "id": 1
+          },
+          {
+            "link": "#2",
+            "text": "一加手机5T开箱：大多数人理想的旗舰手机",
+            "time": "1516545001000",
+            "classify": "classify",
+            "classifyText": "图赏",
+            "imgSrc": {
+              "num": 7,
+              "src": [
+                {
+                  "imgSrc": "http://image20.it168.com/postion/3119/dc30cff3-329c-4fdb-b6a1-cb80bcc0d8c9.jpg"
+                },
+                {
+                  "imgSrc": "http://image20.it168.com/postion/3120/4fc49b8c-3cf3-48fe-a509-25def082cd2b.jpg"
+                },
+                {
+                  "imgSrc": "http://image20.it168.com/postion/3119/dc30cff3-329c-4fdb-b6a1-cb80bcc0d8c9.jpg"
+                }
+              ]
+            },
+            "class": "item-img",
+            "id": 2
+          },
+          {
+            "link": "#2",
+            "text": "一加手机5T开箱：大多数人理想的旗舰手机",
+            "time": "1516545001000",
+            "classify": "classify",
+            "classifyText": "专题",
+            "imgSrc": "http://image20.it168.com/postion/3119/dc30cff3-329c-4fdb-b6a1-cb80bcc0d8c9.jpg",
+            "class": "",
+            "id": -1
+          }
+        ]
+      },
+      {
+        "className": "专题小类C",
+        "classList": [
+          {
+            "link": "detailText.html",
+            "text": "一加手机5T开箱：大多数人理想的旗舰手机",
+            "time": "",
+            "classify": "classify-ad",
+            "classifyText": "广告",
+            "imgSrc": "http://image20.it168.com/postion/3119/dc30cff3-329c-4fdb-b6a1-cb80bcc0d8c9.jpg",
+            "class": "item-ad",
+            "id": 1
+          },
+          {
+            "link": "#2",
+            "text": "一加手机5T开箱：大多数人理想的旗舰手机",
+            "time": "2小时前",
+            "classify": "classify",
+            "classifyText": "图赏",
+            "imgSrc": {
+              "num": 7,
+              "src": [
+                {
+                  "imgSrc": "http://image20.it168.com/postion/3119/dc30cff3-329c-4fdb-b6a1-cb80bcc0d8c9.jpg"
+                },
+                {
+                  "imgSrc": "http://image20.it168.com/postion/3120/4fc49b8c-3cf3-48fe-a509-25def082cd2b.jpg"
+                },
+                {
+                  "imgSrc": "http://image20.it168.com/postion/3119/dc30cff3-329c-4fdb-b6a1-cb80bcc0d8c9.jpg"
+                }
+              ]
+            },
+            "class": "item-img",
+            "id": 2
+          },
+          {
+            "link": "#2",
+            "text": "一加手机5T开箱：大多数人理想的旗舰手机",
+            "time": "2小时前",
+            "classify": "classify",
+            "classifyText": "专题",
+            "imgSrc": "http://image20.it168.com/postion/3119/dc30cff3-329c-4fdb-b6a1-cb80bcc0d8c9.jpg",
+            "class": "",
+            "id": -1
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" ng-app="IT168" ng-class="{banscoll: banScroll}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>频道页</title>
+    <link rel="stylesheet" href="public/css/base.css">
+    <script src="public/js/jquery.js"></script>
+    <script src="public/js/base.js"></script>
+    <script src="public/js/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="public/js/wxShare.js"></script>
+</head>
+<body ng-class="{banscoll: banScroll}">
+
+<div ng-include="'views/headerChannel.html'"></div>
+<div ng-controller="navCtrl" ng-cloak>
+    <div class="nav_box" style="display: none;">
+        <div class="nav_menu">
+            <div class="nav padding-r-0">
+                <a ng-repeat="(key,nav) in navs" ng-class="{active: key == index}" href="javascript:;"
+                   ng-click="navHideEvent(key)" target="_self">{{nav.text}}</a>
+            </div>
+        </div>
+    </div>
+    <!--导航展开更多开始-->
+    <div ng-include="'views/navAll.html'"></div>
+    <!--导航展开更多结束-->
+</div>
+<div class="ITi68Wrap" id="ITi68Wrap">
+    <!--列表开始-->
+    <div ng-include="'views/list.html'"></div>
+    <!--列表结束-->
+</div>
+</body>
+<!--判断页面横屏活竖屏--start-->
+<script>
+    //    hengshuping()
+    //    function hengshuping(){
+    //        if(window.orientation==180||window.orientation==0){
+    //            alert("竖屏状态！")
+    //        }
+    //        if(window.orientation==90||window.orientation==-90){
+    //            alert("横屏状态！")
+    //        }
+    //    }
+    //    window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", hengshuping, false);
+</script>
+<!--判断页面横屏活竖屏--end-->
+<script>
+    angular.module('Controllers', [])
+            /*顶部导航部分*/
+            .controller('navCtrl', ['$scope', '$rootScope', '$http', '$timeout', function ($scope, $rootScope, $http, $timeout) {
+                $rootScope.isLoading = false;
+                $scope.index = 0;
+                $scope.navs = [
+                    {text: "最新"},
+                    {text: "新闻"},
+                    {text: "评测"},
+                    {text: "导购"},
+                    {text: "行情"},
+                    {text: "其他"}
+                ];
+                /*分类切换*/
+                $scope.navHideEvent = function (key) {
+                    $rootScope.isLoading = false;
+                    $rootScope.items = {};
+                    angular.element('html,body').animate({scrollTop: 0}, 0);
+                    $rootScope.banScroll = false;
+                    $rootScope.navAllShow = true;
+                    $rootScope.classPage = key;
+                    $scope.index = key;
+                    $rootScope.page = 1;
+                    /*$http({
+                        method: 'get',
+                        url: 'datas/list.json?classify=' + $rootScope.channelClass,
+                        params: { // get 参数
+                            classPage: $rootScope.classPage,
+                            page: $rootScope.page,
+                        },
+                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                    })*/
+
+
+
+                    $http.jsonp("http://api.cms.it168.com/api/it168/datas/list?jsoncallback=JSON_CALLBACK&page=1&id="+$rootScope.channelClass+"&type="+$rootScope.classPage).success(function (data, status, headers, config) {
+                        $rootScope.items = data.data;
+                        $rootScope.page++;
+                    });
+
+                };
+            }])
+            /*资讯列表部分*/
+            .controller('listCtrl', ['$scope', '$location', '$http', '$timeout', '$rootScope', function ($scope, $location, $http, $timeout, $rootScope) {
+                /*var channelUrl = $location.url();//获取url
+                $rootScope.channelClass = channelUrl.substring(channelUrl.indexOf('-') + 1, channelUrl.lastIndexOf('.'));
+                */
+                $(".nav_box").show();
+                //zyl
+                $rootScope.channelClass = $location.search().id;
+                // $rootScope.channelClass = $rootScope.channelClass.substring($rootScope.channelClass.indexOf('-') + 1); //截取url中的id参数
+                console.log($rootScope.channelClass);
+                /*根据url中的id判断频道类型--star*/
+                $rootScope.classification = "手机"
+                if ($rootScope.channelClass == 1) {
+                    $rootScope.classification = "手机";
+                } else if ($rootScope.channelClass == 2) {
+                    $rootScope.classification = "相机";
+                } else if ($rootScope.channelClass == 3) {
+                    $rootScope.classification = "台式机";
+                } else if ($rootScope.channelClass == 4) {
+                    $rootScope.classification = "键盘鼠标";
+                } else if ($rootScope.channelClass == 5) {
+                    $rootScope.classification = "数码";
+                } else if ($rootScope.channelClass == 6) {
+                    $rootScope.classification = "家电";
+                } else if ($rootScope.channelClass == 7) {
+                    $rootScope.classification = "音频";
+                } else if ($rootScope.channelClass == 8) {
+                    $rootScope.classification = "笔记本";
+                } else if ($rootScope.channelClass == 9) {
+                    $rootScope.classification = "移动存储";
+                } else if ($rootScope.channelClass == 10) {
+                    $rootScope.classification = "DIY";
+                } else if ($rootScope.channelClass == 11) {
+                    $rootScope.classification = "显示器";
+                } else if ($rootScope.channelClass == 12) {
+                    $rootScope.classification = "企业IT";
+                } else if ($rootScope.channelClass == 13) {
+                    $rootScope.classification = "汽车";
+                    console.log($);
+                    $(".nav_box").hide();
+                    $("#ITi68Wrap").css("padding-top","1.8773333rem");
+                } else if ($rootScope.channelClass == 14) {
+                    $rootScope.classification = "互联网";
+                } else if ($rootScope.channelClass == 15) {
+                    $rootScope.classification = "一体电脑";
+                }
+
+                document.title = $rootScope.classification + "频道";
+                /*页面的title*/
+                $rootScope.title = $rootScope.classification; //频道页header头部标题
+                $rootScope.shareTitle = "IT168" + $rootScope.classification + "频道";
+                /*请求资讯列表开始*/
+                $rootScope.classPage = 0;
+                $rootScope.params = {
+                    classPage: $rootScope.classPage,
+                    page: 1,
+                }
+                /*$http({
+                    method: 'get',
+                    url: 'datas/list2.json?classify=' + $rootScope.channelClass,
+                    params: $rootScope.params,
+                    //data: 'page='+page+"&classify="+$rootScope.channelClass,
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                })*/
+                var initUrl = "";
+                if($rootScope.channelClass == 13){
+                    initUrl = "http://author2.it168.cn/api/xcsx/for_wapit168?jsoncallback=JSON_CALLBACK&page=1";
+                }else {
+                    initUrl = "http://api.cms.it168.com/api/it168/datas/list?jsoncallback=JSON_CALLBACK&page=1&id="+$rootScope.channelClass+"&type=0";
+                }
+
+                $http.jsonp(initUrl).success(function (data, status, headers, config) {
+                    if (!data.code) {
+                        window.location.href = "404.html"
+                    } else {
+                        $rootScope.items = data.data;
+                    }
+
+                });
+                /*请求资讯列表结束*/
+                $rootScope.isLoading = false;
+                /*回滚到页面顶部事件*/
+                $scope.backTop = function () {
+                    angular.element('html,body').animate({scrollTop: 0}, 300);
+                }
+
+                /*加载更多开始*/
+                var loadFlag = 1;
+                var isFlag = true;
+                $scope.loadMoreLine = function () {
+                    $rootScope.isLoading = false;
+                    /*get请求*/
+                    if (!loadFlag) {
+                        return;
+                    }else {
+                        if (!isFlag) {
+                            return;
+                        } else {
+                            isFlag = false;
+                        };
+                    }
+                    /*$http({
+                        method: 'get',
+                        url: 'datas/list2.json?classify=' + $rootScope.channelClass,
+                        params: { // get 参数
+                            classPage: $rootScope.classPage,
+                            page: $rootScope.page,
+                        },
+                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                    })*/
+
+
+                    var nextUrl = "";
+                    if($rootScope.channelClass == 13){
+                        nextUrl = "http://author2.it168.cn/api/xcsx/for_wapit168?jsoncallback=JSON_CALLBACK&page="+$rootScope.page;
+                    }else {
+                        nextUrl = "http://api.cms.it168.com/api/it168/datas/list?jsoncallback=JSON_CALLBACK&page="+$rootScope.page+"&id="+$rootScope.channelClass+"&type="+$rootScope.classPage;
+                    }
+
+
+                    $http.jsonp(nextUrl).success(function (data, status, headers, config) {
+                        isFlag = true;
+                        if (!data.code) {
+                            loadFlag = data.code;
+                            $(".IT-loading").html("没有更多了")
+                            return;
+                        }
+                        $rootScope.page++;
+                        $timeout(function () {
+                            $rootScope.isLoading = true;
+                            $rootScope.items = $rootScope.items.concat(data.data);
+                        }, 500, true)
+                    }).error(function () {
+                        console.log("加载更多请求失败");
+                        //alert("请求出错")
+                    });
+                }
+                /*加载更多结束*/
+
+
+            }])
+            /*$location配置*/
+            .config(['$locationProvider', function ($locationProvider) {
+                $locationProvider.html5Mode({
+                    enabled: true,
+                    requireBase: false//必须配置为false，否则<base href=''>这种格式带base链接的地址才能解析
+                });
+            }]);
+</script>
+</html>

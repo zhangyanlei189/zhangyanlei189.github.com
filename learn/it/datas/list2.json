@@ -1,0 +1,55 @@
+{
+  "code": 1,
+  "data": [
+    {
+      "link": "#",
+      "text": "一加手机5T开箱：大多数人理想的旗舰手机",
+      "time":"1516545001000",
+      "classify":"classify-ad",
+      "classifyText":"广告",
+      "imgSrc": "http://image20.it168.com/postion/3120/4fc49b8c-3cf3-48fe-a509-25def082cd2b.jpg",
+      "class": "item-ad",
+      "id": -1
+    },
+    {
+      "link": "special.html",
+      "text": "一加手机5T开箱：大多数人理想的旗舰手机",
+      "time":"1516859867000",
+      "classify":"classify",
+      "classifyText":"专题",
+      "imgSrc": "http://image20.it168.com/postion/3120/4fc49b8c-3cf3-48fe-a509-25def082cd2b.jpg",
+      "class": "",
+      "id": -1
+    },
+    {
+      "link": "detailText.html",
+      "text": "一加手机5T开箱：大多数人理想的旗舰手机",
+      "time":"1516859167000",
+      "classify":"",
+      "classifyText":"",
+      "imgSrc": "http://image20.it168.com/postion/3120/4fc49b8c-3cf3-48fe-a509-25def082cd2b.jpg",
+      "class": "",
+      "id": 1
+    },
+    {
+      "link": "#",
+      "text": "一加手机5T开箱：大多数人理想的旗舰手机",
+      "time":"1516848167000",
+      "classify":"classify-ad",
+      "classifyText":"广告",
+      "imgSrc": "http://image20.it168.com/postion/3120/4fc49b8c-3cf3-48fe-a509-25def082cd2b.jpg",
+      "class": "",
+      "id": -1
+    },
+    {
+      "link": "#",
+      "text": "一加手机5T开箱：大多数人理想的旗舰手机",
+      "time":"1516545001000",
+      "classify":"classify-ad",
+      "classifyText":"广告",
+      "imgSrc": "http://image20.it168.com/postion/3120/4fc49b8c-3cf3-48fe-a509-25def082cd2b.jpg",
+      "class": "",
+      "id": -1
+    }
+  ]
+}

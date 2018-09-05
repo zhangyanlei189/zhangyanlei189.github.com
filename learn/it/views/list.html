@@ -1,0 +1,61 @@
+<div ng-controller="listCtrl">
+    <ul class="IT-list">
+        <li ng-repeat="(key,item) in items" ng-cloak class="{{item.class}}">
+            <a href="{{item.link}}{{item.id | filterId}}" target="_self"   ng-if="item.class != 'item-img'">
+                <div class="mess">
+                    <div class="text">{{item.text}}</div>
+                    <div class="time"><span class="{{item.classify}}">{{item.classifyText}}</span>{{item.time | filterTime}}</div>
+                </div>
+                <img ng-src="{{item.imgSrc}}" alt="">
+            </a>
+            <a href="{{item.link}}{{item.id | filterId}}" target="_self"  ng-if="item.class =='item-img'">
+                <div class="mess">
+                    <div class="text">{{item.text}}</div>
+                </div>
+                <div class="pic">
+                    <img alt="" ng-repeat="value in item.imgSrc.src" ng-src="{{value.imgSrc}}">
+                    <div class="picnum">{{item.imgSrc.num}}图</div>
+                </div>
+                <div class="time"><span class="{{item.classify}}">{{item.classifyText}}</span>{{item.time | filterTime}}</div>
+            </a>
+        </li>
+
+
+        <!--<li>
+            <a href="#">
+                <div class="mess">
+                    <div class="text">一加手机5T开箱：大多数人理想的旗舰手机</div>
+                    <div class="time">2小时前</div>
+                </div>
+                <img src="http://image20.it168.com/postion/3120/4fc49b8c-3cf3-48fe-a509-25def082cd2b.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <div class="mess">
+                    <div class="text">一加手机5T开箱：大多数人理想的旗舰手机</div>
+                    <div class="time"><span class="classify-ad">广告</span>2小时前</div>
+                </div>
+                <img src="http://image20.it168.com/postion/3120/4fc49b8c-3cf3-48fe-a509-25def082cd2b.jpg" alt="">
+            </a>
+        &lt;!&ndash;</li>&ndash;&gt;
+        <li class="item-ad">
+            <a href="#">
+                <div class="mess">
+                    <div class="text">一加手机5T开箱：大多数人理想的旗舰手机</div>
+                    <div class="time"><span class="classify-ad">广告</span></div>
+                </div>
+                <img src="http://image20.it168.com/postion/3120/4fc49b8c-3cf3-48fe-a509-25def082cd2b.jpg" alt="">
+            </a>
+        </li>-->
+    </ul>
+    <!--反馈开始-->
+    <div class="IT-feedback" ng-hide="feedback"><a href="javascript:;" target="_self" ng-click="backTop()"></a><a href="https://jinshuju.net/f/PSJ9ql" target="_self"></a></div>
+    <!--反馈结束-->
+    <!--加载中。。。开始-->
+    <div when-scrolled="loadMoreLine()" ng-hide="isLoading" class="IT-loading">
+        <span class="loading-animate"></span>加载中...
+    </div>
+    <!--加载中。。。结束-->
+</div>
+
