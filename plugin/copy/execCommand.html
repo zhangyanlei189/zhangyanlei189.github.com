@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>最简单复制，兼容ie6+</title>
+</head>
+<body>
+<code>jquery选择// 这是一个</code>
+<textarea id="txtarea">这是我要复制的内容2</textarea>
+<button id="btn" type="button">点我复制</button>
+<script>
+    var id = document.getElementById("btn");
+    var area = document.getElementById("txtarea");
+    btn.onclick = function () {
+        area.focus();
+        area.select();
+        document.execCommand("copy");
+        alert("复制成功");
+    }
+</script>
+</body>
+</html>
