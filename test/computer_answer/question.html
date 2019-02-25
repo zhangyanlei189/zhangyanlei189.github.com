@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>年终大促</title>
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
+    <link rel="stylesheet" href="css/base.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body>
+<div id="wrap" class="quest">
+    <!--<div class="progress-box"><div class="act"></div><div></div><div></div><div></div><div></div><div></div><div></div></div>-->
+    <div class="cont">
+        <div class="title"></div>
+        <div class="ans">
+        </div>
+    </div>
+    <div class="dd"></div>
+    <!--<div class="btns" style="display: none;">
+        <div class="pre">上一题</div>
+        <div class="next">下一题</div>
+    </div>-->
+</div>
+<div>
+
+</div>
+<script>
+    window.addEventListener("pageshow",function (event) {
+        var dd = $(".dd");
+        var str = "";
+        for(var key in event){
+            if(typeof event[key] != 'object' && typeof event[key] != 'function'){
+                str += key+"----"+event[key]+"<br>";
+            }
+        }
+        dd.html(str);
+    })
+    $(function () {
+        var sels;
+        $.get("data/question.json",function (data) {
+            setFn(data);
+        },"json");
+        function setFn(data) {
+            sels = data;
+            $(".cont .title").text(sels.title);
+            var str = "";
+            var ans = sels.answers;
+            if(ans){
+                for(var i=0,len=ans.length;i<len;i++){
+                    str+="<div class='option list' val='indx_"+i+"'>"+ans[i]["name"]+"</div>";
+                }
+                $(".cont .ans").html(str);
+            }else {
+                localStorage.removeItem("selType");
+                localStorage.setItem("selType",sels.value);
+                location.href = "result.html";
+            }
+        }
+        $(".ans").on("click",".option",function () {
+            localStorage.removeItem("seled");
+            var i = $(this).attr("val").split("_")[1];
+            sels = sels.answers[i];
+            localStorage.setItem('seled',JSON.stringify(sels));
+            setFn(sels);
+        });
+
+    });
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>年终大促</title>
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script>
+        //防止页面后退
+        history.pushState(null, null, document.URL);
+        window.addEventListener('popstate', function () {
+            history.pushState(null, null, document.URL);
+        });
+    </script>
+</head>
+<body>
+<div id="wrap" class="quest result" style="display: none;">
+    <div id="result">
+        <div class="bg-wrap">
+            <div class="swiper-box">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="slide-img">1</div>
+                            <div class="slide-info">华为 MateBook 12英寸平板二合一笔记本电脑 (Intel core m3 4G内存 128G存储 键盘 Win10)香槟金</div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slide-img">2</div>
+                            <div class="slide-info">苹果打算的撒换个改就的撒路公交到拉萨寄过来快捷键</div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slide-img">3</div>
+                            <div class="slide-info">34苹果打算的撒换个改就的撒路公交到拉萨寄过来快捷键</div>
+                        </div>
+                    </div>
+
+                    <!-- 如果需要导航按钮 -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+            <div class="goods-info">
+                <div class="tabs">
+                    <div class="tab tab1 act" val="1">产品参数</div>
+                    <div class="tab tab2" val="2">产品特点</div>
+                    <div class="tab tab3" val="3">产品性能</div>
+                    <div class="tab tab4" val="4">编辑点评</div>
+                </div>
+                <div class="goods-cont">
+                    <div class="tab-cont active tab-cont1">
+                        <table>
+                            <tr>
+                                <td>产品定位</td>
+                                <td>商务办公本</td>
+                            </tr>
+                            <tr>
+                                <td>机身颜色</td>
+                                <td>香槟金</td>
+                            </tr>
+                            <tr>
+                                <td>操作系统</td>
+                                <td>预装Windows 10</td>
+                            </tr>
+                            <tr>
+                                <td>处理器型号</td>
+                                <td>酷睿 m3 处理器</td>
+                            </tr>
+                            <tr>
+                                <td>处理器主频</td>
+                                <td>2.2GHz</td>
+                            </tr>
+                            <tr>
+                                <td>内存容量</td>
+                                <td>4GB</td>
+                            </tr>
+                            <tr>
+                                <td>硬盘容量</td>
+                                <td>128GB SSD</td>
+                            </tr>
+                            <tr>
+                                <td>硬盘描述</td>
+                                <td>SSD固态硬盘</td>
+                            </tr>
+                            <tr>
+                                <td>显卡类型</td>
+                                <td>核芯显卡</td>
+                            </tr>
+                            <tr>
+                                <td>显卡芯片</td>
+                                <td>HD Graphics 515</td>
+                            </tr>
+                            <tr>
+                                <td>屏幕尺寸</td>
+                                <td>12英寸</td>
+                            </tr>
+                            <tr>
+                                <td>屏幕类型</td>
+                                <td>IPS屏</td>
+                            </tr>
+                            <tr>
+                                <td>摄像头</td>
+                                <td>前摄像头500万像素</td>
+                            </tr>
+                            <tr>
+                                <td>指纹识别</td>
+                                <td>支持智能指纹识别功能</td>
+                            </tr>
+                            <tr>
+                                <td>重量(净重)</td>
+                                <td>0.64Kg</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="tab-cont tab-cont2">
+                        dassgdsagjdksagj
+                    </div>
+                    <div class="tab-cont tab-cont3">
+                        <table></table>
+                    </div>
+                    <div class="tab-cont tab-cont4">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" id="buy-btn">点击购买</a>
+</div>
+<div class="cover"></div>
+<div class="cover-top">
+    <div class="bg-img">
+        <img src="images/jisuanzhong.gif" alt="">
+    </div>
+    <div class="tip">推荐中<div class="progress"><span>...</span><div class="c"></div></div></div>
+</div>
+<script>
+    $(function () {
+        var id = localStorage.getItem("selType");
+        var good;
+        $.get("data/goodsdata.json",function (data) {
+            for (var i = 0; i < data.length; i++) {
+                if(id == data[i]["goodsId"]){
+                    good = data[i];
+                    console.log(good);
+                }
+            }
+            setPage(good);
+
+            setTimeout(function () {
+                $("#wrap").show();
+                $(".cover,.cover-top").hide();
+            },1000);
+        },"json");
+
+
+
+
+        function setPage(data) {
+
+            // 顶部商品图片
+            var strTop = "";
+            var imgs = data.imgs;
+            for(var i=0;i<imgs.length;i++){
+                strTop+="<div class='swiper-slide'><div class='slide-img'><img src='images/tmp/"+imgs[i]+"' alt=''></div><div class='slide-info'>"+data.name+"</div></div>"
+            }
+            $(".swiper-wrapper").html(strTop);
+            var mySwiper = new Swiper ('.swiper-container', {
+                loop: true, // 循环模式选项
+                // 如果需要前进后退按钮
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            })
+
+            // 产品参数
+            var strParam = "";
+            var params = data.param;
+            for(var key in params){
+                strParam+="<tr><td>"+key+"</td><td>"+params[key]+"</td></tr>";
+            }
+            $(".goods-cont .tab-cont1 table").html(strParam);
+
+            // 产品特点
+            $(".goods-cont .tab-cont2").html(data.feature);
+
+            //产品性能
+            var strCapt = "";
+            var capts = data.capability;
+            for (var key in capts) {
+                strCapt += "<tr><td>"+key+"</td><td>"+capts[key]+"</td></tr>"
+            }
+            $(".goods-cont .tab-cont3 table").html(strCapt);
+
+            //编辑点评
+            $(".goods-cont .tab-cont4").html(data.comments);
+
+            //购买
+            $("#buy-btn").attr("href",data.link);
+
+        }
+
+        $("#result .tab").on("click",function () {
+            $(this).addClass("act").siblings().removeClass("act");
+            var val = $(this).attr("val");
+            $(".tab-cont"+val).addClass("active").siblings().removeClass("active");
+        });
+    });
+</script>
+</body>
+</html>
