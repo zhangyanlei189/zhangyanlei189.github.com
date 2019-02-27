@@ -16,7 +16,6 @@
         <div class="ans">
         </div>
     </div>
-    <div class="dd"></div>
     <!--<div class="btns" style="display: none;">
         <div class="pre">上一题</div>
         <div class="next">下一题</div>
@@ -26,16 +25,6 @@
 
 </div>
 <script>
-    window.addEventListener("pageshow",function (event) {
-        var dd = $(".dd");
-        var str = "";
-        for(var key in event){
-            if(typeof event[key] != 'object' && typeof event[key] != 'function'){
-                str += key+"----"+event[key]+"<br>";
-            }
-        }
-        dd.html(str);
-    })
     $(function () {
         var sels;
         $.get("data/question.json",function (data) {
