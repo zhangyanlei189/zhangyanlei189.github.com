@@ -26,15 +26,12 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="slide-img">1</div>
-                            <div class="slide-info">华为 MateBook 12英寸平板二合一笔记本电脑 (Intel core m3 4G内存 128G存储 键盘 Win10)香槟金</div>
                         </div>
                         <div class="swiper-slide">
                             <div class="slide-img">2</div>
-                            <div class="slide-info">苹果打算的撒换个改就的撒路公交到拉萨寄过来快捷键</div>
                         </div>
                         <div class="swiper-slide">
                             <div class="slide-img">3</div>
-                            <div class="slide-info">34苹果打算的撒换个改就的撒路公交到拉萨寄过来快捷键</div>
                         </div>
                     </div>
 
@@ -42,6 +39,7 @@
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
                 </div>
+                <div class="slide-info"><p>小米Air</p><a href="" class="out-link">查看横屏文章</a></div>
             </div>
             <div class="goods-info">
                 <div class="tabs">
@@ -128,8 +126,12 @@
             </div>
         </div>
     </div>
-    <a href="#" id="buy-btn">点击购买</a>
 </div>
+<div class="bottom-btns">
+    <a href="question.html" class="bt-btn" id="return">重新测试</a>
+    <a href="#" class="bt-btn" id="buy-btn">点击购买</a>
+</div>
+
 <div class="cover"></div>
 <div class="cover-top">
     <div class="bg-img">
@@ -165,9 +167,15 @@
             var strTop = "";
             var imgs = data.imgs;
             for(var i=0;i<imgs.length;i++){
-                strTop+="<div class='swiper-slide'><div class='slide-img'><img src='images/tmp/"+imgs[i]+"' alt=''></div><div class='slide-info'>"+data.name+"</div></div>"
+                strTop+="<div class='swiper-slide'><div class='slide-img'><img src='images/tmp/"+imgs[i]+"' alt=''></div></div>"
             }
+            $(".swiper-box .slide-info p").text(data.name);
             $(".swiper-wrapper").html(strTop);
+            if(data.type == 1){
+                $(".swiper-box .slide-info a").attr("href","http://notebook.it168.com/a2019/0131/5156/000005156142.shtml");
+            }else {
+                $(".swiper-box .slide-info a").attr("href","http://notebook.it168.com/a2019/0128/5154/000005154272.shtml");
+            }
             var mySwiper = new Swiper ('.swiper-container', {
                 loop: true, // 循环模式选项
                 // 如果需要前进后退按钮

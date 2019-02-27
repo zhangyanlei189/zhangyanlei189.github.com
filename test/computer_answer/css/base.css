@@ -151,6 +151,7 @@ a:hover,
   position: relative;
   width: 100%;
   height: 100%;
+  overflow-y: auto;
 }
 .index {
   background: url("../images/index_pic_bg@2x.png") no-repeat;
@@ -405,11 +406,10 @@ a:hover,
 }
 #result {
   padding-top: 0.15rem;
+  padding-bottom: 0.6rem;
   width: 100%;
-  max-height: 5.8rem;
 }
 #result .bg-wrap {
-  height: 5.8rem;
   overflow-y: auto;
 }
 #result .swiper-box {
@@ -425,6 +425,9 @@ a:hover,
   #result .swiper-box {
     background-image: url("../images/new/3x/pic_card_bg.png");
   }
+}
+#result .swiper-box .swiper-container {
+  height: 2rem;
 }
 #result .swiper-box .slide-img {
   width: 2rem;
@@ -442,7 +445,7 @@ a:hover,
   left: 50%;
   transform: translate(-50%, -50%);
 }
-#result .swiper-box .slide-info {
+#result .swiper-box .slide-info p {
   margin-top: 0.5rem;
   padding: 0 0.1rem;
   line-height: 1.5em;
@@ -452,9 +455,30 @@ a:hover,
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  max-height: 0.66rem;
+  -webkit-line-clamp: 1;
+  max-height: 0.22rem;
   overflow: hidden;
+  text-align: center;
+}
+#result .swiper-box .slide-info .out-link {
+  display: block;
+  bottom: 0.2rem;
+  margin: 0.1rem auto;
+  text-decoration: none;
+  width: 2rem;
+  height: 0.3rem;
+  line-height: 0.3rem;
+  text-align: center;
+  background: #4F9DFE;
+  border-radius: 0.4rem;
+  background-size: 100% 100%;
+  color: #fff;
+  font-size: 0.14rem;
+  box-shadow: 0 0.05rem 0 #3991FF;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-user-select: none;
+  -moz-user-focus: none;
+  -moz-user-select: none;
 }
 #result .swiper-box .swiper-button-prev {
   background-image: url("../images/new/2x/icon_previous_def.png");
@@ -532,27 +556,33 @@ a:hover,
 #result .goods-info .goods-cont .tab-cont3 table tr td:first-of-type {
   width: 1.8rem;
 }
-#buy-btn {
+.bottom-btns {
   position: absolute;
+  width: 100%;
   bottom: 0.2rem;
-  left: 50%;
-  transform: translateX(-50%);
+  text-align: center;
+}
+.bottom-btns .bt-btn {
+  display: inline-block;
   text-decoration: none;
-  width: 2rem;
-  height: 0.4rem;
-  line-height: 0.4rem;
+  width: 1.36rem;
+  height: 0.3rem;
+  line-height: 0.3rem;
   text-align: center;
   background: #dfdba5;
   border-radius: 0.4rem;
   background-size: 100% 100%;
   color: #B95400;
-  font-size: 0.23rem;
+  font-size: 0.14rem;
   letter-spacing: 0.05rem;
   box-shadow: 0 0.05rem 0 #dfb389;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   -webkit-user-select: none;
   -moz-user-focus: none;
   -moz-user-select: none;
+}
+.bottom-btns .bt-btn:first-of-type {
+  margin-right: 0.25rem;
 }
 .cover {
   position: fixed;

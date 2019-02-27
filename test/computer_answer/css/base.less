@@ -215,6 +215,7 @@ a:hover,
   position: relative;
   width: 100%;
   height: 100%;
+  overflow-y: auto;
 }
 .index{
   background: url("../images/index_pic_bg@2x.png") no-repeat;
@@ -432,10 +433,11 @@ a:hover,
 
 #result{
   padding-top: 0.15rem;
+  padding-bottom: 0.6rem;
   width: 100%;
-  max-height: 5.8rem;
+  //max-height: 5.8rem;
   .bg-wrap{
-    height: 5.8rem;
+    //height: 5.8rem;
     overflow-y: auto;
   }
 }
@@ -447,6 +449,9 @@ a:hover,
   margin: 0 auto;
   box-sizing: border-box;
   padding: 0.2rem;
+  .swiper-container{
+    height: 2rem;
+  }
   .slide-img{
     width: 2rem;
     height: 2rem;
@@ -465,12 +470,36 @@ a:hover,
     }
   }
   .slide-info{
-    margin-top: 0.5rem;
-    padding: 0 0.1rem;
-    line-height: 1.5em;
-    color: #40529A;
-    font-size: 0.15rem;
-    .line-clamp(3,0.22rem)
+    p{
+      margin-top: 0.5rem;
+      padding: 0 0.1rem;
+      line-height: 1.5em;
+      color: #40529A;
+      font-size: 0.15rem;
+      .line-clamp(1,0.22rem);
+      text-align: center;
+    }
+    .out-link{
+      display: block;
+      bottom: 0.2rem;
+      margin: 0.1rem auto;
+      text-decoration: none;
+      width: 2rem;
+      height: 0.3rem;
+      line-height: 0.3rem;
+      text-align: center;
+      background: #4F9DFE;
+      border-radius: 0.4rem;
+      background-size: 100% 100%;
+      color: #fff;
+      font-size: 0.14rem;
+      box-shadow: 0 0.05rem 0 #3991FF;
+      -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+      -webkit-user-select: none;
+      -moz-user-focus: none;
+      -moz-user-select: none;
+    }
+
   }
 
 
@@ -549,27 +578,33 @@ a:hover,
     }
   }
 }
-#buy-btn{
+.bottom-btns{
   position: absolute;
+  width: 100%;
   bottom: 0.2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  text-decoration: none;
-  width: 2rem;
-  height: 0.4rem;
-  line-height: 0.4rem;
   text-align: center;
-  background: #dfdba5;
-  border-radius: 0.4rem;
-  background-size: 100% 100%;
-  color: #B95400;
-  font-size: 0.23rem;
-  letter-spacing: 0.05rem;
-  box-shadow: 0 0.05rem 0 #dfb389;
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-  -webkit-user-select: none;
-  -moz-user-focus: none;
-  -moz-user-select: none;
+  .bt-btn{
+    display: inline-block;
+    text-decoration: none;
+    width: 1.36rem;
+    height: 0.3rem;
+    line-height: 0.3rem;
+    text-align: center;
+    background: #dfdba5;
+    border-radius: 0.4rem;
+    background-size: 100% 100%;
+    color: #B95400;
+    font-size: 0.14rem;
+    letter-spacing: 0.05rem;
+    box-shadow: 0 0.05rem 0 #dfb389;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-user-select: none;
+    -moz-user-focus: none;
+    -moz-user-select: none;
+    &:first-of-type{
+      margin-right: 0.25rem;
+    }
+  }
 }
 
 
