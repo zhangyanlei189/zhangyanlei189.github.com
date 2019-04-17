@@ -149,16 +149,16 @@ a:hover {
 }
 .header .nav {
   border-top: 4px solid #3E82DC;
-  height: 105px;
+  height: 91px;
   background: #F9F9F9;
 }
 .header .nav ul {
-  padding: 15px 24px;
+  padding: 11px 24px 0;
 }
 .header .nav li {
   position: relative;
   float: left;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   margin-right: 43px;
   width: 90px;
 }
@@ -173,7 +173,10 @@ a:hover {
   display: block;
 }
 .header .nav li a {
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: bold;
+  opacity: 0.95;
+  filter: alpha(opacity=95);
   color: #686868;
 }
 .header .nav li a:hover {
@@ -186,7 +189,7 @@ a:hover {
 .header .nav li .down-list {
   display: none;
   position: absolute;
-  top: 27px;
+  top: 25px;
   left: 0;
   background: #FFFFFF;
   border: 1px solid #F0F0F0;
@@ -198,6 +201,7 @@ a:hover {
 .header .nav li .down-list a {
   display: block;
   padding: 8px 20px;
+  font-weight: normal;
   color: #333;
   font-size: 14px;
   white-space: normal;
@@ -264,12 +268,17 @@ a:hover {
 }
 .midd-cont .midd-left-box .slide-box .botom-tip {
   position: absolute;
+  left: 0;
+  right: 0;
   bottom: 0;
   padding: 0 15px;
   height: 36px;
   line-height: 36px;
   font-size: 16px;
   color: #FFFFFF;
+  background: url("../images/image_pic_bg.png") repeat-x;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 .midd-cont .midd-left-box .slide-box .swiper-btn {
   position: absolute;
@@ -353,7 +362,6 @@ a:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  line-height: 16px;
 }
 .midd-cont .midd-center-box .m-list {
   padding: 0 10px;
@@ -498,10 +506,16 @@ a:hover {
 .bott-cont .bott-left-cont .bott-cont-box.tushang li .tushang-tit {
   position: absolute;
   bottom: 0;
-  padding: 3px 8px;
+  left: 0;
+  right: 0;
+  padding: 10px 8px;
   overflow: hidden;
   color: #fff;
   font-size: 14px;
+  line-height: 14px;
+  background: url("../images/image_pic_bg.png") repeat-x;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 .bott-cont .bott-left-cont .left-cont {
   width: 380px;
@@ -573,12 +587,18 @@ a:hover {
 .bott-cont .bott-left-cont .two-img .img-box .tit {
   position: absolute;
   bottom: 0;
-  padding: 3px 8px;
+  left: 0;
+  right: 0;
+  padding: 10px 8px;
   width: 169px;
   overflow: hidden;
   color: #fff;
   font-size: 14px;
+  line-height: 14px;
   transition: all 0.2s ease-out;
+  background: url("../images/image_pic_bg.png") repeat-x;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 .bott-cont .bott-left-cont .two-img .img-box span {
   position: absolute;
@@ -635,7 +655,6 @@ a:hover {
   vertical-align: middle;
   max-width: 374px;
   font-size: 14px;
-  line-height: 14px;
   color: #404040;
   letter-spacing: 0;
   text-overflow: ellipsis;
@@ -816,12 +835,18 @@ a:hover {
 .bott-cont .aside-cont .fiveg-box .five-list.first-line .five-tit {
   position: absolute;
   bottom: 0;
-  padding: 5px 10px;
+  left: 0;
+  right: 0;
+  padding: 10px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
   color: #fff;
   font-size: 16px;
+  line-height: 16px;
+  background: url("../images/image_pic_bg.png") repeat-x;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .bott-cont .aside-cont .fiveg-box .five-list.first-line .order-sign {
   position: absolute;
