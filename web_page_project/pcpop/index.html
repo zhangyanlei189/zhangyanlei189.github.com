@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="js/slider/swiper.css">
     <script src="js/jquery.1.12.4.js"></script>
     <script src="js/slider/swiper.js"></script>
-
+    <script src="js/main.js"></script>
 </head>
 <body>
 <div class="wraper">
@@ -44,9 +44,21 @@
         <div class="head w1200 clearfix">
             <div class="logo-box fl"><a href=""><img src="images/logo.png" alt=""></a></div>
             <div class="login-box right fr"><a href="#"><i class="icon-nav_share_icon_login"></i><span>登录泡泡网</span></a></div>
-            <div class="app-box right fr"><a href="#"><i class="icon-nav_share_icon_app"></i><span>APP</span></a></div>
-            <div class="weixin-box right fr"><a href="#"><i class="icon-nav_share_icon_weixin"></i><span>官方微信</span></a></div>
-            <div class="weibo-box right fr"><a href="#"><i class="icon-nav_share_icon_weibo"></i><span>官方微博</span></a></div>
+            <div class="app-box right fr">
+                <a href="#"><i class="icon-nav_share_icon_app"></i><span>APP</span></a>
+                <div class="qr-code">
+                    <img src="http://cdn.static.pcpop.com/pc/images/er.png" alt="">
+                    <span>扫描二维码</span>
+                </div>
+            </div>
+            <div class="weixin-box right fr">
+                <a href="#"><i class="icon-nav_share_icon_weixin"></i><span>官方微信</span></a>
+                <div class="qr-code">
+                    <img src="http://cdn.static.pcpop.com/pc/images/qrcode.png" alt="">
+                    <span>扫描二维码</span>
+                </div>
+            </div>
+            <div class="weibo-box right fr"><a target="_blank" href="https://widget.weibo.com/dialog/follow.php?fuid=1662223823&refer=www.pcpop.com&language=zh_cn&type=widget_page&vsrc=app_followbutton&backurl=http%3A%2F%2Fwww.pcpop.com%2F&rnd=1542112414374"><i class="icon-nav_share_icon_weibo"></i><span>官方微信</span></a></div>
         </div>
         <div class="bk20"></div>
         <div class="nav w1200">
@@ -110,34 +122,6 @@
                 <div class="swiper-btn btnRight"><i class="icon-icon_banner_fanye_r"></i></div>
             </div>
             <div class="pagination"></div>
-            <script>
-                var mySwiper = new Swiper ('.slide-box', {
-                    loop: true,
-                    autoplay : 3000,
-                    autoplayDisableOnInteraction : false,
-                    pagination: '.pagination',
-                    paginationClickable: true,
-                });
-                $(".swiper-container").mouseover(function () {
-                    $(".swiper-btn",this).show();
-                    mySwiper.stopAutoplay();
-                }).mouseout(function () {
-                    $(".swiper-btn",this).hide();
-                    mySwiper.startAutoplay();
-                });
-                $('.swiper-container .btnLeft').on('click', function(e){
-                    e.preventDefault()
-                    mySwiper.stopAutoplay();
-                    mySwiper.swipePrev();
-                    mySwiper.startAutoplay();
-                })
-                $('.swiper-container .btnRight').on('click', function(e){
-                    e.preventDefault()
-                    mySwiper.stopAutoplay();
-                    mySwiper.swipeNext();
-                    mySwiper.startAutoplay();
-                })
-            </script>
             <div class="focus-box clearfix">
                 <div class="focus-cont fl">
                     <a href="#">
@@ -627,18 +611,6 @@
                     </ul>
                 </div>
             </div>
-            <script>
-                console.log($);
-                $(".tabs span").mouseover(function () {
-                    if ($(this).hasClass("active")) return false;
-                    var currCls = $(this).attr("class");
-                    $("."+currCls+"-cont").addClass("active").siblings().removeClass("active")
-                    $(this).addClass("active").siblings().removeClass("active");
-                });
-                $(".tab-cont li").mouseover(function () {
-                    $(this).addClass("act").siblings().removeClass("act");
-                });
-            </script>
             <!--PCPOP专题 e-->
             <!--5G专区 s-->
             <div class="r-title">
@@ -746,6 +718,20 @@
         </div>
     </div>
     <!--footer e-->
+    <div class="toolbar">
+        <div class="phone h-box">
+            <i class="icon-scrollup_icon_phone_normal"></i>
+            <div class="qrcode-box">
+                <div class="qrcode">
+                    <img src="http://cdn.static.pcpop.com/pc/images/er.png" alt="">
+                </div>
+                <span></span>
+            </div>
+        </div>
+        <div class="to-top h-box">
+            <i class="icon-scrollup_icon_up_normal"></i>
+        </div>
+    </div>
 </div>
 </body>
 </html>
