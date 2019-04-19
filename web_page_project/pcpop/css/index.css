@@ -266,6 +266,20 @@ a:hover {
   border-radius: 5px;
   overflow: hidden;
 }
+.midd-cont .midd-left-box .slide-box .swiper-slide img {
+  -webkit-transition: transform 0.2s ease-out;
+  -moz-transition: transform 0.2s ease-out;
+  -ms-transition: transform 0.2s ease-out;
+  -o-transition: transform 0.2s ease-out;
+  transition: transform 0.2s ease-out;
+}
+.midd-cont .midd-left-box .slide-box .swiper-slide img:hover {
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  transform: scale(1.1);
+}
 .midd-cont .midd-left-box .slide-box .botom-tip {
   position: absolute;
   left: 0;
@@ -358,6 +372,7 @@ a:hover {
   vertical-align: middle;
   max-width: 366px;
   font-size: 16px;
+  font-weight: bold;
   color: #0073DD;
   overflow: hidden;
   text-overflow: ellipsis;
