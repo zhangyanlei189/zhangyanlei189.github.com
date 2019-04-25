@@ -1,0 +1,457 @@
+.border-radius(@radius: 50%) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.box-sizing(@size: border-box) {
+  -webkit-box-sizing: @size;
+  -moz-box-sizing: @size;
+  box-sizing: @size;
+}
+
+.line-clamp(@line: 2, @height: 20px) {
+  line-height: @height;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: @line;
+  max-height: @line*@height;
+  overflow: hidden;
+}
+
+.transform(@transform: -50%) {
+  -o-transform: translateX(@transform);
+  -moz-transform: translateX(@transform);
+  -ms-transition: translateX(@transform);
+  -webkit-transform: translateX(@transform);
+  transform: translateX(@transform);
+}
+
+.transition(@transition: 0.3s) {
+  -webkit-transition: all @transition;
+  -moz-transition: all @transition;
+  -ms-transition: all @transition;
+  -o-transition: all @transition;
+  transition: all @transition;
+}
+
+.box-shadow(@shadow: 0 1px 4px 0 rgba(211, 211, 211, 0.50)) {
+  -webkit-box-shadow: @shadow;
+  -moz-box-shadow: @shadow;
+  box-shadow: @shadow;
+}
+
+.transform(@transformX: -50%,
+@transformY: -50%) {
+  -webkit-transform: translate(@transformX, @transformY);
+  -moz-transform: translate(@transformX, @transformY);
+  -ms-transform: translate(@transformX, @transformY);
+  -o-transform: translate(@transformX, @transformY);
+  transform: translate(@transformX, @transformY);
+}
+
+
+/*公共部分开始*/
+html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4,h5,h6 form, input, p, th, td, em, button, textarea, a {
+  margin: 0;
+  padding: 0;
+  font-family: "微软雅黑","Microsoft YaHei"," PingFang-SC", Helvetica, Arial, sans-serif;
+}
+
+html body {
+  min-width: 1200px;
+  font-size: 14px;
+}
+
+body {
+  color: #3c3c3c;
+  background: #ffffff;
+  font: 14px/1.5 "微软雅黑","Microsoft YaHei"," PingFang-SC", Helvetica, Arial, sans-serif;;
+}
+
+input,
+select,
+textarea,
+button {
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+
+/***************去除IE中input中的X**************/
+
+::-ms-clear,
+::-ms-reveal {
+  display: none;
+}
+
+
+/***************修改placeholder**************/
+
+textarea::-webkit-input-placeholder,
+input::-webkit-input-placeholder {
+  color: #c2c2c2;
+  font-family: "Microsoft YaHei", Helvetica, Arial, sans-serif;
+}
+
+textarea::-moz-placeholder,
+input::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #c2c2c2;
+  font-family: "Microsoft YaHei", Helvetica, Arial, sans-serif;
+}
+
+textarea:-moz-placeholder,
+input:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #c2c2c2;
+  font-family: "Microsoft YaHei", Helvetica, Arial, sans-serif;
+}
+
+textarea:-ms-input-placeholder,
+input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #fff;
+  font-family: "Microsoft YaHei", Helvetica, Arial, sans-serif;
+}
+
+
+/***************修改placeholder**************/
+
+img {
+  width: 100%;
+  height: 100%;
+  border: none;
+  overflow: hidden;
+  display: block;
+}
+.img-hover{
+  -webkit-transition: transform .2s ease-out;
+  -moz-transition: transform .2s ease-out;
+  -ms-transition: transform .2s ease-out;
+  -o-transition: transform .2s ease-out;
+  transition: transform .2s ease-out;
+}
+.img-hover:hover{
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill,
+textarea:-webkit-autofill {
+  background-color: #eee!important;
+  color: #333;
+}
+ul,ol,dl {
+  list-style: none;
+}
+.clearfix:after {
+  content: "";
+  clear: both;
+  overflow: hidden;
+  line-height: 0px;
+  height: 0;
+  display: block;
+  visibility: hidden;
+}
+.clearfix {
+  zoom: 1;
+}
+a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+
+.pa {
+  position: absolute;
+}
+
+.pr {
+  position: relative;
+}
+.hide {
+  display: none;
+}
+.w1200 {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+
+/*公共部分结束*/
+
+
+
+
+.bk30{height: 30px;}
+.bk20{height: 20px;}
+.bk15{height: 15px;}
+.bk10{height: 10px;}
+
+
+
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?2dk5bs');
+  src:  url('fonts/icomoon.eot?2dk5bs#iefix') format('embedded-opentype'),
+  url('fonts/icomoon.ttf?2dk5bs') format('truetype'),
+  url('fonts/icomoon.woff?2dk5bs') format('woff'),
+  url('fonts/icomoon.svg?2dk5bs#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-chanpin_icon_search:before {
+  content: "\e931";
+  color: #fff;
+}
+.icon-icon_banner_fanye_l:before {
+  content: "\e900";
+  color: #fff;
+}
+.icon-icon_banner_fanye_r:before {
+  content: "\e901";
+  color: #fff;
+}
+.icon-icon_bijiben:before {
+  content: "\e902";
+  color: #0073dd;
+}
+.icon-icon_jiadian:before {
+  content: "\e903";
+  color: #0073dd;
+}
+.icon-icon_phone:before {
+  content: "\e904";
+  color: #0073dd;
+}
+.icon-icon_pingce:before {
+  content: "\e905";
+  color: #0073dd;
+}
+.icon-icon_tushang:before {
+  content: "\e906";
+  color: #0073dd;
+}
+.icon-icon_yingjian:before {
+  content: "\e907";
+  color: #0073dd;
+}
+.icon-icon_youce:before {
+  content: "\e908";
+  color: #b0c1eb;
+}
+.icon-icon_zonghe:before {
+  content: "\e909";
+  color: #0073dd;
+}
+.icon-image_logo .path1:before {
+  content: "\e90a";
+  color: rgb(0, 74, 141);
+}
+.icon-image_logo .path2:before {
+  content: "\e90b";
+  margin-left: -1em;
+  color: rgb(239, 76, 33);
+}
+.icon-image_logo .path3:before {
+  content: "\e90c";
+  margin-left: -1em;
+  color: rgb(239, 76, 33);
+}
+.icon-image_logo .path4:before {
+  content: "\e90d";
+  margin-left: -1em;
+  color: rgb(239, 76, 33);
+}
+.icon-image_logo .path5:before {
+  content: "\e90e";
+  margin-left: -1em;
+  color: rgb(239, 76, 33);
+}
+.icon-image_logo .path6:before {
+  content: "\e90f";
+  margin-left: -1em;
+  color: rgb(239, 76, 33);
+}
+.icon-image_logo .path7:before {
+  content: "\e910";
+  margin-left: -1em;
+  color: rgb(239, 76, 33);
+}
+.icon-image_logo .path8:before {
+  content: "\e911";
+  margin-left: -1em;
+  color: rgb(239, 76, 33);
+}
+.icon-image_logo .path9:before {
+  content: "\e912";
+  margin-left: -1em;
+  color: rgb(239, 76, 33);
+}
+.icon-image_logo .path10:before {
+  content: "\e913";
+  margin-left: -1em;
+  color: rgb(239, 76, 33);
+}
+.icon-image_logo .path11:before {
+  content: "\e914";
+  margin-left: -1em;
+  color: rgb(239, 76, 33);
+}
+.icon-image_logo .path12:before {
+  content: "\e915";
+  margin-left: -1em;
+  color: rgb(239, 76, 33);
+}
+.icon-image_logo .path13:before {
+  content: "\e916";
+  margin-left: -1em;
+  color: rgb(239, 76, 33);
+}
+.icon-image_logo .path14:before {
+  content: "\e917";
+  margin-left: -1em;
+  color: rgb(239, 76, 33);
+}
+.icon-image_logo .path15:before {
+  content: "\e918";
+  margin-left: -1em;
+  color: rgb(239, 76, 33);
+}
+.icon-image_logo .path16:before {
+  content: "\e919";
+  margin-left: -1em;
+  color: rgb(239, 76, 33);
+}
+.icon-image_logo .path17:before {
+  content: "\e91a";
+  margin-left: -1em;
+  color: rgb(239, 76, 33);
+}
+.icon-image_logo .path18:before {
+  content: "\e91b";
+  margin-left: -1em;
+  color: rgb(239, 76, 33);
+}
+.icon-image_logo .path19:before {
+  content: "\e91c";
+  margin-left: -1em;
+  color: rgb(239, 76, 33);
+}
+.icon-image_logo .path20:before {
+  content: "\e91d";
+  margin-left: -1em;
+  color: rgb(239, 76, 33);
+}
+.icon-image_logo .path21:before {
+  content: "\e91e";
+  margin-left: -1em;
+  color: rgb(239, 76, 33);
+}
+.icon-image_logo .path22:before {
+  content: "\e91f";
+  margin-left: -1em;
+  color: rgb(239, 76, 33);
+}
+.icon-image_logo .path23:before {
+  content: "\e920";
+  margin-left: -1em;
+  color: rgb(239, 76, 33);
+}
+.icon-image_logo .path24:before {
+  content: "\e921";
+  margin-left: -1em;
+  color: rgb(239, 76, 33);
+}
+.icon-image_logo .path25:before {
+  content: "\e922";
+  margin-left: -1em;
+  color: rgb(0, 74, 141);
+}
+.icon-image_logo .path26:before {
+  content: "\e923";
+  margin-left: -1em;
+  color: rgb(0, 74, 141);
+}
+.icon-image_logo .path27:before {
+  content: "\e924";
+  margin-left: -1em;
+  color: rgb(0, 74, 141);
+}
+.icon-nav_icon_collect_normal:before {
+  content: "\e925";
+  color: #cfd2d7;
+}
+.icon-nav_icon_wap:before {
+  content: "\e926";
+  color: #cfd2d7;
+}
+.icon-nav_icon_zhankai:before {
+  content: "\e927";
+  color: #acb0bb;
+}
+.icon-nav_icon_zhankai_s:before {
+  content: "\e928";
+  color: #acb0bb;
+}
+.icon-nav_share_icon_app:before {
+  content: "\e929";
+  color: #2f8ad7;
+}
+.icon-nav_share_icon_login:before {
+  content: "\e92a";
+  color: #f58a23;
+}
+.icon-nav_share_icon_weibo:before {
+  content: "\e92b";
+  color: #e76b7a;
+}
+.icon-nav_share_icon_weixin:before {
+  content: "\e92c";
+  color: #74b94d;
+}
+.icon-scrollup_icon_phone_normal:before {
+  content: "\e92d";
+}
+.icon-scrollup_icon_up_normal:before {
+  content: "\e92e";
+}
+.icon-tab_icon_xiala:before {
+  content: "\e92f";
+  color: #a7a7a7;
+}
+.icon-tab_icon_xiala_s:before {
+  content: "\e930";
+  color: #a7a7a7;
+}

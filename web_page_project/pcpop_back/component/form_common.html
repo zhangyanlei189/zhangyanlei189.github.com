@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>banner图</title>
+    <link rel="stylesheet" href="../js/layui/css/layui.css">
+    <script src="../js/layui/layui.js"></script>
+    <script src="../js/jquery.1.12.4.js"></script>
+    <script src="../js/popup.js"></script>
+    <style>
+        .wrap{padding: 20px;}
+        .form-box{background: #F2F2F2;padding: 5px;margin-bottom: 10px;}
+        .self-outer,.outer-tit{display: none;}
+    </style>
+</head>
+<body style="overflow: hidden;">
+<div class="wrap">
+    <div class="form-box">
+        <form class="layui-form" action="" lay-filter="common-form">
+            <input type="hidden" name="channel_id"  value="">
+            <input type="hidden" name="position_id" value="">
+            <div class="layui-form-item">
+                <label class="layui-form-label">数据来源:</label>
+                <div class="layui-input-inline">
+                    <input type="radio" name="link_type" value="1" title="内链" lay-filter="link_type" checked>
+                    <input type="radio" name="link_type" value="2" title="外链" lay-filter="link_type">
+                </div>
+            </div>
+            <div class="layui-form-item self-inner self-define art_id">
+                <label class="layui-form-label"><span class="">*</span>文章ID:</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="article_id" placeholder="" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux"></div>
+            </div>
+            <div class="layui-form-item self-define">
+                <label class="layui-form-label"><span></span><span class="self-tit">自定义标题</span><span class="outer-tit">* 文章标题</span>:</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="title" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">已录入23字</div>
+            </div>
+            <div class="layui-form-item self-define self-outer url">
+                <label class="layui-form-label"><span>*</span>文章链接:</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="url" placeholder="" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux"></div>
+            </div>
+            <div class="layui-form-item has-img-box">
+                <label class="layui-form-label"><span class="self-tit">文章封面图:</span><span class="outer-tit">* 封面图地址</span>:</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="pic" placeholder="" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux" style="padding: 0 !important;">
+                    <button type="button" class="layui-btn" id="uploadfile"><i class="layui-icon">&#xe67c;</i>上传图片</button>
+                </div>
+            </div>
+            <div class="layui-form-item self-define end_time">
+                <label class="layui-form-label"><span>*</span>下线时间:</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="end_time" name="end_time" placeholder="" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux"></div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit="" lay-filter="*">发布</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    var id = _tools_.getQueryString("id");
+    var ids = id.split("_");
+    var cid = ids[0],pid = ids[1];
+
+
+    layui.use(["form","upload","laydate"],function () {
+        var form = layui.form;
+        var upload = layui.upload;
+        var date = layui.laydate;
+
+        function initPop(){
+            if(cid == "c3"||cid == "c6" || cid == "c13" || cid == "c14" || ((cid=="c8"||cid=="c9"||cid=="c10"||cid=="c11"||cid=="c12")&&pid!="p1"&&pid!="p2")){//文字链
+                $(".has-img-box").hide();
+            }
+            if (cid == "c14") {  //禁用disabled=""
+                $("input[type=radio][value='2']").next().hide(); //只有内链
+                $(".art_id,.end_time").hide();
+                $(".self-tit").hide();
+                $(".outer-tit").show();
+                $(".url").show();
+            }
+        }
+        initPop(); //初始化弹出框
+
+
+
+        //日期时间
+        date.render({
+            elem:"#end_time",
+            type:"datetime",
+            format:"yyyy-MM-dd HH:mm",
+            trigger:"mouseup"
+        });
+
+        //图片上传
+        var uploadInst = upload.render({
+            elem: '#uploadfile' //绑定元素
+            ,url: _tools_.upload_url //上传接口
+            ,accept: 'images'
+            ,field: 'imgdata'
+            ,done: function(res){
+                if (!!res.status) {
+                    $("input[name='pic']").val(res.path);
+                }
+            }
+            ,error: function(){
+                console.log("上传文件异常")
+            }
+        });
+
+        //输入标题长度
+        $("input[name='title']").on("input propertychange",function () {
+            var len = $(this).val().length;
+            $(this).closest(".layui-form-item").find(".layui-word-aux").text("已录入"+len+"字")
+        });
+
+        var form_data = {
+            "channel_id":cid,
+            "position_id":pid,
+            "link_type":"1",
+            "pic":"",
+            "article_id":"",
+            "title":"",
+            "url":""
+        }
+
+        $.get(_tools_.get_url,{channel_id:cid,position_id:pid},function (res) {
+            res.length == 1 && $.extend(form_data,res[0]);
+            form.val("common-form",form_data);
+        })
+
+        form.on("radio(link_type)",function (data) {
+            if(data.value == 1){
+                $(".self-inner").show();
+                $(".self-outer").hide();
+                $(".self-tit").show();
+                $(".outer-tit").hide();
+            }else {
+                $(".self-inner").hide();
+                $(".self-outer").show();
+                $(".self-tit").hide();
+                $(".outer-tit").show();
+            }
+        });
+
+        form.on("submit(*)",function (data) {
+            var field = data.field;
+            if (cid == "c14") {
+                if (!_tools_.vali_id(field)){return false;}
+                if (!_tools_.vali_end(field)) {return false;}
+            }else {
+                if (!_tools_.vali_end(field)) {return false;}
+            }
+            if (field.link_type == 1) {
+                if (!_tools_.vali_id(field)){return false;}
+            }else {
+                if (!_tools_.vali_title(field)) {return false;}
+                if (!_tools_.vali_url(field)) {return false;}
+                if(cid == "c3"||cid == "c6" || cid == "c13" || ((cid=="c8"||cid=="c9"||cid=="c10"||cid=="c11"||cid=="c12")&&pid!="p1"&&pid!="p2")){//文字链
+                    if (!_tools_.vali_pic()) {return false;}
+                }
+            }
+
+            $.post(_tools_.put_url,data.field,function (res) {
+                if (res.code == 1) {
+                    layer.alert('发布成功', {icon: 1,time: 2000,anim:6},function () {
+                        parent.setPicText(id,res.data);
+                        layer.closeAll();
+                    });
+
+                }else if (res.code == 0) {
+                    layer.msg("内链文章ID不存在",{icon: 5,time: 2000,anim: 6});
+                }
+                layer.closeAll();
+            },"json");
+            return false;
+        });
+    })
+
+</script>
+</body>
+</html>
