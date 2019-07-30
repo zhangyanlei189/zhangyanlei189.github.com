@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<div>
+    <embed id="swf1" src="11.swf">
+</div>
+//////////
+<div>
+    <embed id="swf2" src="222.swf">
+</div>
+<div>
+    <embed id="swf3" src="333.swf">
+</div>
+<div>
+    <embed id="swf4" src="http://img1.yo4399.com/swf/2a/bac72d780858080bf1084d61315cfe.swf">
+</div>
+<script>
+
+    $(function () {
+        setInterval(function () {
+            var swf1 = document.getElementById("swf1");
+            console.log(swf1.CurrentFrame()+"******");
+        },3000);
+        setInterval(function () {
+            var swf2 = document.getElementById("swf2");
+            console.log(swf2.CurrentFrame()+"--------");
+        },3000);
+        setInterval(function () {
+            var swf2 = document.getElementById("swf3");
+            console.log(swf2.CurrentFrame()+"^^^^^^^^^");
+        },3000);
+        setInterval(function () {
+            var swf2 = document.getElementById("swf4");
+            console.log(swf2.CurrentFrame()+"^^^^^^^^^");
+        },3000);
+    })
+
+
+</script>
+</body>
+</html>
