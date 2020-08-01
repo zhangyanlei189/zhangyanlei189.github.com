@@ -25,11 +25,29 @@
 
 
 
-    window.addEventListener("message",function(event){
+    /*window.addEventListener("message",function(event){
         console.log(e);
-    });
+    });*/
 
 
 </script>
+<script src="http://admin.yiqicanjun.com/assets/js/jquery.min.js"></script>
+    <script>
+        var type = 1;
+        var text = "学校";
+        $.get("http://api.yiqicanjun.com/api/getschool?type=" + type, {}, function (res) {
+                if (res.data != []) {
+                    var data = res.data;
+                    var html = '<option value="">'+text+'</option>';
+                    data.forEach(function (item) {
+                        html = html + '<option value="' + item.id + '">' + item.name + '</option>'
+                    })
+                    $("select").html(html);
+                } else {
+                    $("select").html('<option value="">'+text+'</option>');
+                }
+                // form.render('select'); //刷新select选择框渲染
+            }, 'json');
+    </script>
 </body>
 </html>
